@@ -1,12 +1,14 @@
-import { createStore, compose } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { rootReducer } from './reducers'
+import thunk from 'redux-thunk'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 const footerInitialState = {
     text: 'hello'
 }
 //константы для стейтов
-export const store = createStore(rootReducer,  {
-    footer: footerInitialState
-}, compose(
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-))
+export const store = createStore(
+    rootReducer,
+    {footer: footerInitialState},
+    composeWithDevTools(applyMiddleware(thunk))
+)

@@ -2,18 +2,24 @@ import React from 'react'
 import {Wrap} from './Styled';
 import connect from 'react-redux/lib/connect/connect';
 import {getTextFooter} from '../../selectors/footerSelectors';
-import {actionX} from '../../actions/footerActions';
+import {actionX, asyncF} from '../../actions/footerActions';
+import { withTheme } from 'styled-components';
 
 function FooterCmp(props){
     console.log(props, props.theme)
 
-    function as (){
-        props.actionX('sdf')
+    function x (){
+        props.actionX('x')
+    }
+
+    function as(){
+        props.asyncF('async')
     }
 
     return(
         <Wrap {...props}>
-            <button onClick={as}>X</button>
+            <button onClick={x}>X</button>
+            <button onClick={as}>async</button>
             {props.text}
         </Wrap>
     )
@@ -24,7 +30,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-    actionX
+    actionX,
+    asyncF
 }
 
-export const Footer = connect(mapStateToProps, mapDispatchToProps)(FooterCmp)
+export const Footer = withTheme(connect(mapStateToProps, mapDispatchToProps)(FooterCmp))
