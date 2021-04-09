@@ -1,11 +1,11 @@
-const initialState = {
-    text: 'hello'
-}
+import {CLICK} from '../actions/footerActions';
 
-export function footerReducer(state = initialState, action) {
+export function footerReducer(state= {}, action) {
     switch (action.type) {
-
-        default:
-            return state
+        case CLICK:
+            return {
+                ...state.footer, text: action.payload
+            }
+        default: return state
     }
 }
