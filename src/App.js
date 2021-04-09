@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import {Switch, Route} from 'react-router-dom'
+import {Header} from './layout/Header/Component'
+import {Content} from './layout/Content/Component'
+import {Footer} from './layout/Footer/Component'
+import {LoginPg} from './Pages/LoginPage/Component';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const routes = [
+    {
+        path: '/',
+        isExact: true,
+        component: LoginPg
+    },
+    // {
+    //     path: '/widget',
+    //     isExact: false,
+    //     component: Addresses
+    // },
+]
+
+export function App() {
+
+    return (
+        <>
+            <Header>
+                Header
+            </Header>
+
+            <Content>
+                <Switch>
+                    {routes.map(({path, component, isExact}) => (
+                        <Route key={path} path={path} exact={isExact} component={component}/>
+                    ))}
+
+                    <Route render={() => <div>NOT FOUND PAGE</div>}/>
+                </Switch>
+            </Content>
+
+            <Footer>
+                Footer
+            </Footer>
+        </>
+    )
 }
-
-export default App;

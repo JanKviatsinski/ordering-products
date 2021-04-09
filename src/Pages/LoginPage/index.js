@@ -1,0 +1,1 @@
+import {LoginPg} from './Component'
