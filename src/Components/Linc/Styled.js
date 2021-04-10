@@ -1,10 +1,9 @@
-import { Layout } from 'antd';
+import { Typography } from 'antd';
 import 'antd/dist/antd.css'
 import styled from 'styled-components'
+const { Link } = Typography;
 
-const { Header } = Layout;
-
-export const HeaderStyled = styled(Header)`
+export const LincStyled = styled(Link)`
    display: flex;
 flex-direction: row;
 height: 100%;

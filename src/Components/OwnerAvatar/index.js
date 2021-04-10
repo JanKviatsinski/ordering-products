@@ -1,0 +1,1 @@
+import {OwnerAvatar} from './Component'

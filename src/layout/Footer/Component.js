@@ -14,7 +14,7 @@ function FooterCmp(props){
     }
 
     return(
-        <Wrap {...props}>
+        <Wrap>
             <button onClick={x}>X</button>
             <button onClick={as}>async</button>
             {props.text}
@@ -22,9 +22,12 @@ function FooterCmp(props){
     )
 }
 
-const mapStateToProps = (state) => ({
-     text: getTextFooter(state)
-})
+const mapStateToProps = (state) => {
+    console.log(state)
+    return {
+        text: getTextFooter(state)
+    }
+}
 
 const mapDispatchToProps = {
     actionX,

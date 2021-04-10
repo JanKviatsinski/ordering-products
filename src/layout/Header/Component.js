@@ -1,8 +1,8 @@
 import React from 'react'
-import {Wrap} from './Styled';
+import {HeaderStyled} from './Styled';
 
 export function Header(props){
     return(
-        <Wrap>{props.children}</Wrap>
+        <HeaderStyled {...props}>{props.children}</HeaderStyled>
     )
 }

@@ -1,8 +1,8 @@
 import React from 'react'
-import {Wrap} from './Styled';
+import {LayoutStyled} from './Styled';
 
 export function Layout(props){
     return(
-        <Wrap>Layout</Wrap>
+        <LayoutStyled {...props}>{props.children}</LayoutStyled>
     )
 }

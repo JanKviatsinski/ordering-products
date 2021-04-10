@@ -1,0 +1,1 @@
+import {OwnerDataCard} from './Component'
