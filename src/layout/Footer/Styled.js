@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
 export const Wrap = styled.div`
-    color: red;
+    color: ${props => props.theme.colors.fontColor1};
     `
-// color: ${rops.styles.colors.fontColor1}

@@ -4,6 +4,7 @@ import {Header} from './layout/Header/Component'
 import {Content} from './layout/Content/Component'
 import {Footer} from './layout/Footer/Component'
 import {LoginPg} from './Pages/LoginPage/Component';
+import {NotFoundPg} from './Pages/notFoundPage/Component';
 
 const routes = [
     {
@@ -32,7 +33,7 @@ export function App() {
                         <Route key={path} path={path} exact={isExact} component={component}/>
                     ))}
 
-                    <Route render={() => <div>NOT FOUND PAGE</div>}/>
+                    <Route component={NotFoundPg}/>
                 </Switch>
             </Content>
 

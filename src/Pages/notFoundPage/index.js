@@ -1,0 +1,1 @@
+import {NotFoundPg} from './Component'

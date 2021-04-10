@@ -1,8 +1,5 @@
 import {CLICK, CLICK_ASYNC} from '../actions/footerActions';
 
-// const footerInitialState = {
-//     text: 'hello'
-// }
 
 export function footerReducer(state = {}, action) {
     switch (action.type) {
