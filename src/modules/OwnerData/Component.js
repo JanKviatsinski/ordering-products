@@ -7,22 +7,23 @@ import {getPhotoOwner} from '../../models/selectors/headerSelectors';
 import {Linc} from '../../Components/Linc/Component';
 import {Address} from '../Address/Component';
 
-function OwnerDataCardCmp(props){
+function OwnerDataCardCmp(props) {
     console.log(props.photoOwner)
-    return(
+    return (
         <OwnerDataCardStyled
             size={'small'}
             hoverable
             cover={
                 <OwnerAvatar
                     size={64}
-                    icon={<img alt='owner' src={props.photoOwner} />}
+                    icon={<img alt='owner' src={props.photoOwner}/>}
                 />
             }
+            actions={[
+                <Address/>
+            ]}
         >
-
-            <Meta title='Europe Street beat' description="www.instagram.com" />
-            <Address/>
+            <Meta title='Europe Street beat' description="www.instagram.com"/>
         </OwnerDataCardStyled>
     )
 }
