@@ -1,38 +1,56 @@
 import React from 'react'
-import connect from 'react-redux/lib/connect/connect';
 import Meta from 'antd/es/card/Meta';
 import {OwnerDataCardStyled} from './Styled';
-import {OwnerAvatar} from '../../Components/OwnerAvatar/Component';
-import {getPhotoOwner} from '../../models/selectors/headerSelectors';
-import {Linc} from '../../Components/Linc/Component';
+import {Avatar} from '../../Components/Avatar/Component';
 import {Address} from '../Address/Component';
+import {Image} from '../../Components/Image/Component';
+import {
+    DESCRIPTION_OWNER,
+    NAME_SURNAME_OWNER,
+    // PHONE_NUMBER,
+    PHONE_NUMBER_HREF,
+    TELEGRAM_HREF
+} from './constants';
+import photoOwner from './../../Components/Images/photoOwner.png'
+import {Link} from '../../Components/Link/Component';
+import telegramImg from '../../Components/Images/telegram.svg';
+import phoneImg from '../../Components/Images/img-phone.svg'
+import {AddressStyled} from '../Address/Styled';
 
-function OwnerDataCardCmp(props) {
-    console.log(props.photoOwner)
+export function OwnerDataCard(props) {
     return (
         <OwnerDataCardStyled
             size={'small'}
             hoverable
             cover={
-                <OwnerAvatar
+                <Avatar
                     size={64}
-                    icon={<img alt='owner' src={props.photoOwner}/>}
+                    icon={<Image alt='owner' src={photoOwner}/>}
                 />
             }
             actions={[
-                <Address/>
+                <Link href={PHONE_NUMBER_HREF}>
+                    <Image
+                        src={phoneImg}
+                        width={'30px'}
+                        height={'30px'}
+                        alt={'phone'}
+                    />
+                </Link>,
+                <Link href={TELEGRAM_HREF}>
+                    <Image
+                        justify={'center'}
+                        src={telegramImg}
+                        width={'30px'}
+                        height={'30px'}
+                        alt={'telegram'}
+                    />
+                </Link>
+                // <Address/>
             ]}
         >
-            <Meta title='Europe Street beat' description="www.instagram.com"/>
+
+            <Meta title={NAME_SURNAME_OWNER} description={DESCRIPTION_OWNER}/>
         </OwnerDataCardStyled>
     )
 }
-
-const mapStateToProps = (state) => {
-    // console.log(state)
-    return {
-        photoOwner: getPhotoOwner(state)
-    }
-}
-
-export const OwnerDataCard = connect(mapStateToProps)(OwnerDataCardCmp)

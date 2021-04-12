@@ -6,7 +6,7 @@ const { Header } = Layout;
 
 export const HeaderStyled = styled(Header)`
    display: flex;
-flex-direction: row;
-height: 100%;
+   flex-direction: row;
+   height: 100%;
     `
 // color: ${props => props.myTheme.colors.fontColor1};

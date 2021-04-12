@@ -1,9 +1,6 @@
-import {Avatar} from 'antd'
-import 'antd/dist/antd.css'
 import styled from 'styled-components'
 
-export const OwnerAvatarStyled = styled(Avatar)`
-color: 
+export const LogInOutStyled = styled.address`
     `
 // ${props => {
 //     console.log(props)

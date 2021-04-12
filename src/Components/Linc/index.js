@@ -1,1 +1,0 @@
-import {Linc} from './Component'

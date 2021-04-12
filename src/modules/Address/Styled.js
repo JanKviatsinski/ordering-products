@@ -1,8 +1,10 @@
 import styled from 'styled-components'
 
+//почему не применяется этот стиль?
 export const AddressStyled = styled.address`
+    background-color: red; 
     `
-// ${props => {
-//     console.log(props)
-//     return props.theme.colors.fontColor
-// }}
+
+//     & *:not(:last-child){
+//     margin-bottom: 10px;
+// }

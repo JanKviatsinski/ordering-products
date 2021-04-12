@@ -1,0 +1,1 @@
+import {MainMenuWrap} from './Component'

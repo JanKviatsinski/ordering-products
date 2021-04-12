@@ -3,8 +3,8 @@ import 'antd/dist/antd.css'
 import styled from 'styled-components'
 
 export const OwnerDataCardStyled = styled(Card)`
-    `
-// ${props => {
-//     console.log(props)
-//     return props.theme.colors.fontColor
-// }}
+padding: 8px;
+& a{
+ display: flex;
+}
+`
