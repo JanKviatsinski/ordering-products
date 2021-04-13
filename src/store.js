@@ -7,6 +7,7 @@ import {routes} from './routes';
 const UserDataInitialState = {
     isLogged: false
 }
+
 const MenuInitialState = {
     selectedKey: routes[0].path
 }

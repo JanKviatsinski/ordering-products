@@ -5,7 +5,6 @@ import {routes} from '../../routes';
 import {Link as RouterLink} from 'react-router-dom';
 
 export function MenuCmp(props) {
-    console.log(props)
     return (
         <MenuStyled
             onClick={props.selectMenuKey} selectedKeys={[props.selectedKey]} mode="vertical"

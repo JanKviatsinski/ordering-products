@@ -18,7 +18,6 @@ export function OwnerDataCard(props) {
     return (
         <OwnerDataCardStyled
             size={'small'}
-            hoverable
             cover={
                 <Avatar
                     size={64}

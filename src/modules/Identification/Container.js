@@ -12,7 +12,7 @@ export function IdentificationContainer(props) {
                 <AuthenticationPg/>
             }/>
 
-            <Route path={`${url}/:registration`}
+            <Route path={`${url}/registration`}
                    component={() =>
                        <RegistrationPg/>
                    }/>
