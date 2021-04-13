@@ -3,11 +3,7 @@ import {ImageStyled} from './Styled';
 
 export function Image(props){
     return(
-        <ImageStyled
-            src={props.src}
-            alt={props.alt}
-            {...props}
-        >
+        <ImageStyled {...props}>
             {props.children}
         </ImageStyled>
     )

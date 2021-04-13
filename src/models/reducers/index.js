@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 import { footerReducer } from './footer.reducer'
-import {headerReducer} from './headerReducer';
+import {userDataReducer} from './userDataReducer'
 
 export const rootReducer = combineReducers({
     footer: footerReducer,
-    header: headerReducer
+    userData: userDataReducer
 })

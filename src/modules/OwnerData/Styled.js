@@ -4,7 +4,9 @@ import styled from 'styled-components'
 
 export const OwnerDataCardStyled = styled(Card)`
 padding: 8px;
-& a{
+    &&& a{
  display: flex;
+ justify-content: center;
 }
 `
+

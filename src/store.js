@@ -7,12 +7,13 @@ const footerInitialState = {
     text: 'hello'
 }
 
-const headerInitialState = {
+const UserDataInitialState = {
+    isLogged: true
 }
 
 //константы для стейтов
 export const store = createStore(
     rootReducer,
-    {footer: footerInitialState, header: headerInitialState},
+    {footer: footerInitialState, userData: UserDataInitialState},
     composeWithDevTools(applyMiddleware(thunk))
 )
