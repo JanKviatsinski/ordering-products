@@ -1,1 +1,1 @@
-import {LogInOut} from './Component'
+export {LogInOut} from './Container'

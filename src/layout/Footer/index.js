@@ -1,1 +1,1 @@
-import {Footer} from './Component'
+export {Footer} from './Component'

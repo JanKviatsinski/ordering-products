@@ -1,19 +1,22 @@
 import { createStore, applyMiddleware } from 'redux'
-import { rootReducer } from './models/reducers'
+import { rootReducer } from './reducers'
 import thunk from 'redux-thunk'
 import { composeWithDevTools } from 'redux-devtools-extension'
-
-const footerInitialState = {
-    text: 'hello'
-}
+import {routes} from './routes';
 
 const UserDataInitialState = {
-    isLogged: true
+    isLogged: false
+}
+const MenuInitialState = {
+    selectedKey: routes[0].path
 }
 
 //константы для стейтов
 export const store = createStore(
     rootReducer,
-    {footer: footerInitialState, userData: UserDataInitialState},
+    {
+        userData: UserDataInitialState,
+        menuState: MenuInitialState,
+    },
     composeWithDevTools(applyMiddleware(thunk))
 )

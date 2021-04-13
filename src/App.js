@@ -1,22 +1,22 @@
 import React from 'react'
 import {Switch, Route} from 'react-router-dom'
-import {Header} from './layout/Header/Component'
-import {Content} from './layout/Content/Component'
-import {Footer} from './layout/Footer/Component'
-import {NotFoundPg} from './Pages/notFoundPage/Component';
-import {Layout} from './layout/layout/Component';
-import {MainMenu} from './modules/MainMenu/Component';
-import {OwnerDataCard} from './modules/OwnerData/Component';
-import {MainMenuWrap} from './modules/MainMenuWrap/Component';
+import {Header} from './layout/Header'
+import {Content} from './layout/Content'
+import {Footer} from './layout/Footer'
+import {NotFoundPg} from './Pages/notFoundPage';
+import {Layout} from './layout/layout';
+import {Menu} from './modules/Menu';
+import {OwnerDataCard} from './modules/OwnerData';
+import {MainMenuWrap} from './modules/MainMenuWrap';
+import {LogInOut} from './modules/LogIn.Out';
 import {routes} from './routes'
-import {LogInOut} from './modules/LogIn.Out/Component';
 export function App() {
     return (
         <Layout>
             <Header>
                 <OwnerDataCard/>
                 <MainMenuWrap>
-                    <MainMenu/>
+                    <Menu/>
                     <LogInOut/>
                 </MainMenuWrap>
             </Header>

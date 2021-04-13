@@ -1,8 +1,9 @@
 import React from 'react'
 import Meta from 'antd/es/card/Meta';
 import {OwnerDataCardStyled} from './Styled';
-import {Avatar} from '../../Components/Avatar/Component';
-import {Image} from '../../Components/Image/Component';
+import {Avatar} from '../../Components/Avatar';
+import {Image} from '../../Components/Image';
+import {LinkAnt} from '../../Components/LinkAnt';
 import {
     DESCRIPTION_OWNER,
     NAME_SURNAME_OWNER,
@@ -10,7 +11,6 @@ import {
     TELEGRAM_HREF_OWNER
 } from './constants';
 import photoOwner from './../../Components/Images/photoOwner.png'
-import {Link} from '../../Components/Link/Component';
 import telegramImg from '../../Components/Images/telegram.svg';
 import phoneImg from '../../Components/Images/img-phone.svg'
 
@@ -26,18 +26,18 @@ export function OwnerDataCard(props) {
                 />
             }
             actions={[
-                <Link href={PHONE_NUMBER_HREF_OWNER}>
+                <LinkAnt href={PHONE_NUMBER_HREF_OWNER}>
                     <Image
                         src={phoneImg}
                         alt={'phone'}
                     />
-                </Link>,
-                <Link href={TELEGRAM_HREF_OWNER}>
+                </LinkAnt>,
+                <LinkAnt href={TELEGRAM_HREF_OWNER}>
                     <Image
                         src={telegramImg}
                         alt={'telegram'}
                     />
-                </Link>
+                </LinkAnt>
             ]}
         >
 

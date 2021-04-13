@@ -1,5 +1,5 @@
 import React from 'react'
-import {Wrap} from './Styled';
+import {Wrap} from './Styled'
 
 export function NotFoundPg(props){
     return(

@@ -1,0 +1,1 @@
+export {LinkAnt} from './Component'

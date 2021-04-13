@@ -1,19 +1,20 @@
 import React from 'react'
+import {useHistory} from 'react-router-dom'
 import {LogInOutStyled} from './Styled';
-import {Button} from '../../Components/Button/Component';
+import {Button} from '../../Components/Button';
 
-export function LogInOut(props){
-    //из стора будет loggedIn
-    const  loggedIn = false
+
+export function LogInOutCmp(props){
+    const history = useHistory()
     let btnText
     let onClickFunc
 
-    if (loggedIn){
+    if (props.isLogged){
         btnText = 'LogOut'
-        onClickFunc = ()=>{console.log('LogOut')}
+        onClickFunc = ()=>{console.log('POST LogOut')}
     }else {
         btnText = 'LogIn'
-        onClickFunc = ()=>{console.log('LogIn')}
+        onClickFunc = ()=>{history.push(`/identification/:registration`)}
     }
 
     return(

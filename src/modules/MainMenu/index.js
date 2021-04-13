@@ -1,1 +1,0 @@
-import {MainMenu} from './Component'

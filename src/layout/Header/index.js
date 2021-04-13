@@ -1,1 +1,1 @@
-import {Heder} from './Component'
+export {Header} from './Component'

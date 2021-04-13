@@ -1,1 +1,1 @@
-import {Content} from './Component'
+export {Content} from './Component'

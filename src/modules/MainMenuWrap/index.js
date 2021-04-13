@@ -1,1 +1,1 @@
-import {MainMenuWrap} from './Component'
+export {MainMenuWrap} from './Component'

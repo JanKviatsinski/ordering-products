@@ -3,5 +3,5 @@ import 'antd/dist/antd.css'
 import styled from 'styled-components'
 const { Link } = Typography;
 
-export const LinkStyled = styled(Link)`
+export const LinkAntStyled = styled(Link)`
     `

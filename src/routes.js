@@ -1,28 +1,29 @@
-import {LoginPg} from './Pages/LoginPage/Component';
+import {NotFoundPg} from './Pages/notFoundPage';
+import {IdentificationContainer} from './modules/Identification';
 
 export const routes = [
     {
         path: '/',
         title: 'Home',
         isExact: true,
-        component: LoginPg
+        component: NotFoundPg
     },
     {
         path: '/orderForm',
         title: 'Order form',
         isExact: true,
-        component: LoginPg
+        component: NotFoundPg
     },
     {
         path: '/gallery',
         title: 'Gallery',
         isExact: true,
-        component: LoginPg
+        component: NotFoundPg
     },
     {
-        path: '/contacts',
-        title: 'Contacts',
-        isExact: true,
-        component: LoginPg
+        path: '/identification',
+        title: 'Authentication',
+        isExact: false,
+        component: IdentificationContainer
     },
 ]
