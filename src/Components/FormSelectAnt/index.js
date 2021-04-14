@@ -1,0 +1,1 @@
+export {FormSelectAnt} from './Component'

@@ -14,3 +14,16 @@ export function clickLogInOutBtn(path){
         payload: path
     }
 }
+
+// export const CLICK_ASYNC = `${MODULE_NAME}/CLICK_ASYNC`
+
+// export function asyncF (string){
+//     return async (dispatch)=>{
+//         await setTimeout(()=>{
+//             return dispatch({
+//                 type: CLICK_ASYNC,
+//                 payload: string
+//             })
+//         }, 2000)
+//     }
+// }

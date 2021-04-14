@@ -3,14 +3,16 @@ import {createGlobalStyle} from 'styled-components';
 export const theme = {
     colors: {
         fontColor1: 'rgb(221, 221, 221)',
-        fontColor2: 'rgb(0, 0, 0)'
+        fontColor2: 'rgb(0, 0, 0)',
+        backgroundColorPrimary: '#1a581a',
     },
     radii: {
         radius0: '0'
     },
     paddings: {
         padding1: '4px',
-        padding2: '8px'
+        padding2: '8px',
+        padding3: '12px'
     }
 }
 

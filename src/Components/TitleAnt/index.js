@@ -1,0 +1,1 @@
+export {TitleAnt} from './Component'
