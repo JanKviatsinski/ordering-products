@@ -1,1 +1,1 @@
-export {InputAnt} from './Component'
+export { InputAnt } from './Component'

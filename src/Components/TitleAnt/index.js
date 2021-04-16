@@ -1,1 +1,1 @@
-export {TitleAnt} from './Component'
+export { TitleAnt } from './Component'

@@ -1,1 +1,1 @@
-export {IdentificationContainer} from './Container'
+export { IdentificationContainer } from './Container'

@@ -1,13 +1,13 @@
-import connect from 'react-redux/lib/connect/connect';
-import {RegistrationFormCmp} from './Component';
-import {onSubmitRegistration} from '../../actions/userDataActons';
+import connect from 'react-redux/lib/connect/connect'
+import { RegistrationFormCmp } from './Component'
+import { onSubmitRegistration } from '../../actions/userDataActons'
 
-const mapStateToProps = (state) => {
-    return state
-}
+const mapStateToProps = (state) => state
 
 const mapDispatchToProps = {
-    onSubmitRegistration
+  onSubmitRegistration,
 }
 
-export const RegistrationForm = connect(mapStateToProps, mapDispatchToProps)(RegistrationFormCmp)
+export const RegistrationForm = connect(mapStateToProps, mapDispatchToProps)(
+  RegistrationFormCmp,
+)

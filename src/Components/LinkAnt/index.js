@@ -1,1 +1,1 @@
-export {LinkAnt} from './Component'
+export { LinkAnt } from './Component'

@@ -1,1 +1,1 @@
-export {RegistrationForm} from './Container'
+export { RegistrationForm } from './Container'

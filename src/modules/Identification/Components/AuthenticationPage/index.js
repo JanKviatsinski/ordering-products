@@ -1,1 +1,1 @@
-export {AuthenticationPg} from './Component'
+export { AuthenticationPg } from './Component'

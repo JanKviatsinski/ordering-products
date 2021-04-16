@@ -1,1 +1,1 @@
-export {Layout} from './Component'
+export { Layout } from './Component'

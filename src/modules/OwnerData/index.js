@@ -1,1 +1,1 @@
-export {OwnerDataCard} from './Component'
+export { OwnerDataCard } from './Component'

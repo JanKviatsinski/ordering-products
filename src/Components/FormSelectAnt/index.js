@@ -1,1 +1,1 @@
-export {FormSelectAnt} from './Component'
+export { FormSelectAnt } from './Component'

@@ -1,1 +1,1 @@
-export {MenuItem} from './Component'
+export { MenuItem } from './Component'

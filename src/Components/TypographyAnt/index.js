@@ -1,1 +1,1 @@
-export {TypographyAnt} from './Component'
+export { TypographyAnt } from './Component'

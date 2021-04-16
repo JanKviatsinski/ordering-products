@@ -1,1 +1,1 @@
-export {FormItemAnt} from './Component'
+export { FormItemAnt } from './Component'

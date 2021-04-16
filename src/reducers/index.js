@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
-import {userDataReducer} from './userDataReducer'
-import {menuStateReducer} from './menuStateReducer';
+import { userDataReducer } from './userDataReducer'
+import { menuStateReducer } from './menuStateReducer'
 
 export const rootReducer = combineReducers({
-    userData: userDataReducer,
-    menuState: menuStateReducer
+  userData: userDataReducer,
+  menuState: menuStateReducer,
 })

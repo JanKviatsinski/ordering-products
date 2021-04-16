@@ -1,1 +1,1 @@
-export {RegistrationPg} from './Component'
+export { RegistrationPg } from './Component'

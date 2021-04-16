@@ -1,1 +1,1 @@
-export {NotFoundPg} from './Component'
+export { NotFoundPg } from './Component'
