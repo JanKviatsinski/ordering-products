@@ -4,7 +4,8 @@ import { MenuStyled } from './Styled'
 import { MenuItem } from '../../Components/MenuItem'
 import { routes } from '../../routes'
 
-export function MenuCmp(selectMenuKey, selectedKey) {
+export function MenuCmp({ selectMenuKey, selectedKey }) {
+  console.log(selectedKey, selectMenuKey)
   return (
     <MenuStyled
       onClick={selectMenuKey}

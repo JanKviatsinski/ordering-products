@@ -1,8 +1,8 @@
 import React from 'react'
 import { FormItemStyled } from './Styled'
 
-export function FormItemAnt() {
+export function FormItemAnt({ name, children, rules }) {
   return (
-    <FormItemStyled />
+    <FormItemStyled name={name} rules={rules}>{children}</FormItemStyled>
   )
 }

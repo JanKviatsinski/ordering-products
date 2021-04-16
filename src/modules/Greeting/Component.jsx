@@ -7,14 +7,9 @@ import { GREETING_TEXT, GREETING_TITLE_TEXT } from './constants'
 export function Greeting() {
   return (
     <TypographyAnt>
-      <TitleAnt
-        level={4}
-        text={GREETING_TITLE_TEXT}
-      />
+      <TitleAnt level={4} text={GREETING_TITLE_TEXT} />
 
-      <ParagraphAnt
-        text={GREETING_TEXT}
-      />
+      <ParagraphAnt text={GREETING_TEXT} />
     </TypographyAnt>
   )
 }

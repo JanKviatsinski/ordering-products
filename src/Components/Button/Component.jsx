@@ -1,8 +1,8 @@
 import React from 'react'
 import { ButtonStyled } from './Styled'
 
-export function Button(children) {
+export function Button({ children, type, onClick }) {
   return (
-    <ButtonStyled>{children}</ButtonStyled>
+    <ButtonStyled type={type} onClick={onClick}>{children}</ButtonStyled>
   )
 }

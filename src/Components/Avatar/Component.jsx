@@ -1,8 +1,8 @@
 import React from 'react'
 import { AvatarStyled } from './Styled'
 
-export function Avatar(children) {
+export function Avatar({ size, icon }) {
   return (
-    <AvatarStyled>{children}</AvatarStyled>
+    <AvatarStyled size={size} icon={icon} />
   )
 }

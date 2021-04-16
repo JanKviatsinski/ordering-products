@@ -30,7 +30,7 @@ const tailFormItemLayout = {
 
 export const RegistrationFormCmp = ({ onSubmitRegistration }) => {
   const [form] = Form.useForm()
-
+  console.log(onSubmitRegistration)
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <FormSelectAnt>
@@ -46,7 +46,10 @@ export const RegistrationFormCmp = ({ onSubmitRegistration }) => {
       {...formItemLayout}
       form={form}
       name="register"
-      onFinish={(data) => onSubmitRegistration(data)}
+      onFinish={(data) => {
+        console.log(data)
+        return onSubmitRegistration(data)
+      }}
       initialValues={{
         prefix: prefixValues[0],
       }}
@@ -125,3 +128,4 @@ export const RegistrationFormCmp = ({ onSubmitRegistration }) => {
     </FormStyled>
   )
 }
+// tailFormItemLayout={tailFormItemLayout}

@@ -4,12 +4,12 @@ import { LogInOutStyled } from './Styled'
 import { Button } from '../../Components/Button'
 
 // как лучше назвать этот компонент?
-export function LogInOutCmp(props) {
+export function LogInOutCmp({ logged }) {
   const history = useHistory()
   let btnText
   let onClickFunc
 
-  if (props.logged) {
+  if (logged) {
     btnText = 'LogOut'
     onClickFunc = () => {
       console.log('POST LogOut')
@@ -18,12 +18,12 @@ export function LogInOutCmp(props) {
     btnText = 'LogIn'
     onClickFunc = () => {
       history.push('/identification/registration')
-      props.clickLogInOutBtn('/identification')
+      // props.clickLogInOutBtn('/identification')
     }
   }
 
   return (
-    <LogInOutStyled {...props}>
+    <LogInOutStyled>
       <Button
         type="primary"
         onClick={onClickFunc}

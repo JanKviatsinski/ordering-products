@@ -20,5 +20,6 @@ module.exports = {
     semi: ['error', 'never'],
     'import/prefer-default-export': 'off',
     'react/prop-types': 'off',
+    'react/jsx-props-no-spreading': 'off',
   },
 }

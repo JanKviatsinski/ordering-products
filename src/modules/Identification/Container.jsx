@@ -3,9 +3,8 @@ import { Switch, Route } from 'react-router-dom'
 import { AuthenticationPg } from './Components/AuthenticationPage'
 import { RegistrationPg } from './Components/RegistrationPage'
 
-export function IdentificationContainer(match) {
+export function IdentificationContainer({ match }) {
   const { url } = match
-
   return (
     <Switch>
       <Route

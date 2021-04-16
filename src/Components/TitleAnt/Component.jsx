@@ -1,8 +1,8 @@
 import React from 'react'
 import { TitleAntStyled } from './Styled'
 
-export function TitleAnt(text) {
+export function TitleAnt({ level, text }) {
   return (
-    <TitleAntStyled>{text}</TitleAntStyled>
+    <TitleAntStyled level={level}>{text}</TitleAntStyled>
   )
 }
