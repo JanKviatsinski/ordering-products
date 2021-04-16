@@ -9,6 +9,7 @@ import {FormSelectAnt} from '../../Components/FormSelectAnt';
 import {prefixValues} from './constats';
 import {FormItemAnt} from '../../Components/FormItemAnt';
 import {Button} from '../../Components/Button';
+import {validatePassword} from '../../Utils/validatePassword';
 
   const { Option } = Select;
 
@@ -75,6 +76,7 @@ export const RegistrationFormCmp = ({onSubmitRegistration}) => {
                         required: true,
                         message: 'Please input your password!',
                     },
+                    { validator: validatePassword }
                 ]}
                 hasFeedback
             >
@@ -82,7 +84,7 @@ export const RegistrationFormCmp = ({onSubmitRegistration}) => {
             </FormItemAnt>
 
             <FormItemAnt
-                name='username'
+                name='displayName'
                 rules={[{ required: true, message: 'Please input your name!', whitespace: true }]}
             >
                 <Input placeholder='Name is required'/>

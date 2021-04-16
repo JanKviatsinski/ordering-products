@@ -4,7 +4,6 @@ const MODULE_NAME = 'UserData'
 export const USER_IS_LOGGED = `${MODULE_NAME}/USER_IS_LOGGED`
 
 export function onSubmitRegistration(data) {
-    console.log(data)
     return async (dispatch) => {
         const responseRegistration = await registration(data);
         const resultRegistration = await responseRegistration.json();
@@ -15,17 +14,20 @@ export function onSubmitRegistration(data) {
 
         if (idToken !== undefined) {
             console.log('YES')
-            return
-        } else {
-            console.log('ERROR')
             return dispatch({
                 type: USER_IS_LOGGED,
-                payload: data
+                payload: {...data, idToken}
             })
-
-
-
-
+        } else {
+            console.log('ERROR')
+            return
         }
     }
 }
+
+// const localId = resultRegistration.localId
+
+// const responseDataUser = await getUserData(idToken)
+// const resultDataUser = await responseDataUser.json()
+//
+// console.log(resultDataUser)
