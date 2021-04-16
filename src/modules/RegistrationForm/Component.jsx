@@ -15,22 +15,22 @@ const { Option } = Select
 
 const formItemLayout = {
   wrapperCol: {
-    sm: { span: 100 },
+    sm: { span: 30 },
   },
 }
 
 const tailFormItemLayout = {
   wrapperCol: {
     sm: {
-      span: 100,
-      offset: 0,
+      span: 30,
+      offset: 30,
     },
   },
 }
 
 export const RegistrationFormCmp = ({ onSubmitRegistration }) => {
   const [form] = Form.useForm()
-  console.log(onSubmitRegistration)
+
   const prefixSelector = (
     <Form.Item name="prefix" noStyle>
       <FormSelectAnt>
@@ -46,10 +46,7 @@ export const RegistrationFormCmp = ({ onSubmitRegistration }) => {
       {...formItemLayout}
       form={form}
       name="register"
-      onFinish={(data) => {
-        console.log(data)
-        return onSubmitRegistration(data)
-      }}
+      onFinish={(data) => onSubmitRegistration(data)}
       initialValues={{
         prefix: prefixValues[0],
       }}
@@ -128,4 +125,3 @@ export const RegistrationFormCmp = ({ onSubmitRegistration }) => {
     </FormStyled>
   )
 }
-// tailFormItemLayout={tailFormItemLayout}

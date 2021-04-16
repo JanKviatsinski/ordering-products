@@ -4,6 +4,7 @@ const MODULE_NAME = 'UserData'
 export const USER_IS_LOGGED = `${MODULE_NAME}/USER_IS_LOGGED`
 
 export function onSubmitRegistration(data) {
+  console.log(88)
   return async (dispatch) => {
     const responseRegistration = await registration(data)
     const resultRegistration = await responseRegistration.json()

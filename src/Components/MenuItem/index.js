@@ -1,1 +1,2 @@
-export { MenuItem } from './Component'
+// eslint-disable-next-line import/named
+export { MenuItems } from './Component'
