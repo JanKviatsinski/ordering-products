@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
 export const Wrap = styled.div`
-    color: ${(props) => props.theme.colors.fontColor2};
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: ${(props) => props.theme.paddings.padding2};
+background-color: ${(props) => (props).theme.colors.backgroundColorPrimary || null};
     `

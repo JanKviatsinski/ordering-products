@@ -1,1 +1,0 @@
-export { TypographyAnt } from './Component'

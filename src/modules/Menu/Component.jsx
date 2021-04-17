@@ -1,36 +1,21 @@
 import React from 'react'
-import { Menu } from 'antd'
-import {
-  SettingOutlined,
-} from '@ant-design/icons'
-// eslint-disable-next-line import/named
-import { MenuItems } from '../../Components/MenuItem'
+import { Link as RouterLink } from 'react-router-dom'
+import { MenuStyled } from './Styled'
+import { MenuItem } from '../../Components/MenuItem'
+import { routes } from '../../routes'
 
-const { SubMenu } = Menu
-
-export function MenuCmp({ selectMenuKey }) {
-  const handleClick = (e) => {
-    console.log('click ', e)
-    selectMenuKey(e)
-  }
+export function MenuCmp({ selectMenuKey, selectedKey }) {
   return (
-    <Menu onClick={handleClick} mode="vertical">
-      <MenuItems key="mail">
-        Navigation One
-      </MenuItems>
-      <SubMenu
-        key="SubMenu"
-        icon={<SettingOutlined />}
-        title="Navigation Three - Submenu"
-      />
-      <Menu.Item key="alipay">
-        <a href="https://ant.design" target="_blank" rel="noopener noreferrer">
-          Navigation Four - Link
-        </a>
-      </Menu.Item>
-    </Menu>
+    <MenuStyled
+      onClick={selectMenuKey}
+      selectedKeys={[selectedKey]}
+      mode="vertical"
+    >
+      {routes.map(({ path, title }) => (
+        <MenuItem key={path}>
+          <RouterLink to={path}>{title}</RouterLink>
+        </MenuItem>
+      ))}
+    </MenuStyled>
   )
 }
-
-// onClick={selectMenuKey}
-// selectedKeys={[selectedKey]}

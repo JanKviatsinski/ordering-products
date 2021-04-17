@@ -1,0 +1,5 @@
+export const PATH_HOME = '/'
+export const PATH_ORDER_FORM = '/orderForm'
+export const PATH_GALLERY = '/gallery'
+export const PATH_AUTHENTICATION = '/identification'
+export const PATH_REGISTRATION = '/registration'

@@ -6,5 +6,3 @@ export function Image({ src, alt }) {
     <ImageStyled src={src} alt={alt} />
   )
 }
-
-// not children

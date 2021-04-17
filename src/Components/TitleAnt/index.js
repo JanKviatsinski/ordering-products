@@ -1,1 +1,0 @@
-export { TitleAnt } from './Component'

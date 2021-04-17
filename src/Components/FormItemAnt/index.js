@@ -1,1 +1,0 @@
-export { FormItemAnt } from './Component'

@@ -1,1 +1,0 @@
-export { InputAnt } from './Component'

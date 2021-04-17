@@ -1,11 +1,9 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
 import { LogInOutStyled } from './Styled'
 import { Button } from '../../Components/Button'
 
 // как лучше назвать этот компонент?
-export function LogInOutCmp({ logged }) {
-  const history = useHistory()
+export function LogInOutCmp({ logged, clickLogInOutBtn }) {
   let btnText
   let onClickFunc
 
@@ -17,7 +15,8 @@ export function LogInOutCmp({ logged }) {
   } else {
     btnText = 'LogIn'
     onClickFunc = () => {
-      history.push('/identification/registration')
+      console.log('asas')
+      clickLogInOutBtn()
       // props.clickLogInOutBtn('/identification')
     }
   }

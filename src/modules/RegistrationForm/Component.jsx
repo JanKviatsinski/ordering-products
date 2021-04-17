@@ -2,28 +2,31 @@ import React from 'react'
 import {
   Form,
   Input,
-  Select,
+  // Select,
 } from 'antd'
 import { FormStyled } from './Styled'
-import { FormSelectAnt } from '../../Components/FormSelectAnt'
-import { prefixValues } from './constats'
-import { FormItemAnt } from '../../Components/FormItemAnt'
+// import { FormSelect } from '../../Components/FormSelect'
+import { FormItem } from '../../Components/FormItem'
 import { Button } from '../../Components/Button'
 import { validatePassword } from '../../Utils/validatePassword'
+// import { prefixValues } from './constats'
 
-const { Option } = Select
+// const { Option } = Select
 
 const formItemLayout = {
+  labelCol: {
+    sm: { span: 6 },
+  },
   wrapperCol: {
-    sm: { span: 30 },
+    sm: { span: 20 },
   },
 }
 
 const tailFormItemLayout = {
   wrapperCol: {
     sm: {
-      span: 30,
-      offset: 30,
+      span: 0,
+      offset: 0,
     },
   },
 }
@@ -31,15 +34,15 @@ const tailFormItemLayout = {
 export const RegistrationFormCmp = ({ onSubmitRegistration }) => {
   const [form] = Form.useForm()
 
-  const prefixSelector = (
-    <Form.Item name="prefix" noStyle>
-      <FormSelectAnt>
-        {prefixValues.map(
-          (prefix) => <Option key={prefix} value={prefix}>{prefix}</Option>,
-        )}
-      </FormSelectAnt>
-    </Form.Item>
-  )
+  // const prefixSelector = (
+  //   <Form.Item name="prefix" noStyle>
+  //     <FormSelect>
+  //       {prefixValues.map(
+  //         (prefix) => <Option key={prefix} value={prefix}>{prefix}</Option>,
+  //       )}
+  //     </FormSelect>
+  //   </Form.Item>
+  // )
 
   return (
     <FormStyled
@@ -47,13 +50,14 @@ export const RegistrationFormCmp = ({ onSubmitRegistration }) => {
       form={form}
       name="register"
       onFinish={(data) => onSubmitRegistration(data)}
-      initialValues={{
-        prefix: prefixValues[0],
-      }}
+      // initialValues={{
+      //   prefix: prefixValues[0],
+      // }}
       scrollToFirstError
     >
-      <FormItemAnt
+      <FormItem
         name="email"
+        label="Email"
         rules={[
           {
             type: 'email',
@@ -65,11 +69,12 @@ export const RegistrationFormCmp = ({ onSubmitRegistration }) => {
           },
         ]}
       >
-        <Input placeholder="E-mail is required" />
-      </FormItemAnt>
+        <Input />
+      </FormItem>
 
-      <FormItemAnt
+      <FormItem
         name="password"
+        label="Password"
         rules={[
           {
             required: true,
@@ -79,11 +84,12 @@ export const RegistrationFormCmp = ({ onSubmitRegistration }) => {
         ]}
         hasFeedback
       >
-        <Input.Password placeholder="Password is required" />
-      </FormItemAnt>
+        <Input.Password />
+      </FormItem>
 
-      <FormItemAnt
+      <FormItem
         name="displayName"
+        label="Name"
         rules={[
           {
             required: true,
@@ -91,37 +97,35 @@ export const RegistrationFormCmp = ({ onSubmitRegistration }) => {
             whitespace: true,
           }]}
       >
-        <Input placeholder="Name is required" />
-      </FormItemAnt>
-
-      <FormItemAnt
-        name="residence"
-      >
-        <Input placeholder="Habitual Residence is optional" />
-      </FormItemAnt>
-
-      <FormItemAnt
-        name="phone"
-      >
-        <Input
-          addonBefore={prefixSelector}
-          placeholder="Phone number is optional"
-        />
-      </FormItemAnt>
-
-      <FormItemAnt
-        name="telegram"
-      >
-        <Input
-          placeholder="Enter the link to your telegram account! Is optional"
-        />
-      </FormItemAnt>
-
-      <FormItemAnt {...tailFormItemLayout}>
+        <Input />
+      </FormItem>
+      <FormItem {...tailFormItemLayout}>
         <Button type="primary" htmlType="submit">
           Register
         </Button>
-      </FormItemAnt>
+      </FormItem>
     </FormStyled>
   )
 }
+// <FormItem
+//   name="residence"
+// >
+//   <Input placeholder="Habitual Residence is optional" />
+// </FormItem>
+//
+// <FormItem
+//   name="phone"
+// >
+//   <Input
+//     addonBefore={prefixSelector}
+//     placeholder="Phone number is optional"
+//   />
+// </FormItem>
+//
+// <FormItem
+//   name="telegram"
+// >
+//   <Input
+//     placeholder="Enter the link to your telegram account! Is optional"
+//   />
+// </FormItem>

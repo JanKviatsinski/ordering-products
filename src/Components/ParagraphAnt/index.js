@@ -1,1 +1,0 @@
-export { ParagraphAnt } from './Component'

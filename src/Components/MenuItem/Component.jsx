@@ -1,8 +1,7 @@
 import React from 'react'
 import { MenuItemStyled } from './Styled'
 
-export function MenuItems(props) {
-  console.log(props)
+export function MenuItem(props) {
   return (
     <MenuItemStyled {...props}>{props.children}</MenuItemStyled>
   )

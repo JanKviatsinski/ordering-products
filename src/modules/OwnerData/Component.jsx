@@ -3,7 +3,7 @@ import Meta from 'antd/es/card/Meta'
 import { OwnerDataCardStyled } from './Styled'
 import { Avatar } from '../../Components/Avatar'
 import { Image } from '../../Components/Image'
-import { LinkAnt } from '../../Components/LinkAnt'
+import { Link } from '../../Components/Link'
 import {
   DESCRIPTION_OWNER,
   NAME_SURNAME_OWNER,
@@ -25,18 +25,18 @@ export function OwnerDataCard() {
         />
       )}
       actions={[
-        <LinkAnt href={PHONE_NUMBER_HREF_OWNER}>
+        <Link href={PHONE_NUMBER_HREF_OWNER}>
           <Image
             src={phoneImg}
             alt="phone"
           />
-        </LinkAnt>,
-        <LinkAnt href={TELEGRAM_HREF_OWNER}>
+        </Link>,
+        <Link href={TELEGRAM_HREF_OWNER}>
           <Image
             src={telegramImg}
             alt="telegram"
           />
-        </LinkAnt>,
+        </Link>,
       ]}
     >
 
