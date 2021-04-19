@@ -1,7 +1,21 @@
+import { ExclamationCircleOutlined } from '@ant-design/icons'
+import { Modal } from 'antd'
 import { registration } from '../api/registration'
 import { authentication } from '../api/authentication'
 import { history } from '../history'
 import { PATH_HOME } from '../pathes'
+// import { SHOW_MODAL } from './modalActions'
+
+function confirm() {
+  Modal.confirm({
+    title: 'Confirm',
+    // eslint-disable-next-line react/jsx-filename-extension,react/react-in-jsx-scope
+    icon: <ExclamationCircleOutlined />,
+    content: 'Bla bla ...',
+    okText: 'ff',
+    cancelText: 'we',
+  })
+}
 
 const MODULE_NAME = 'UserData'
 export const USER_IS_LOGGED = `${MODULE_NAME}/USER_IS_LOGGED`
@@ -26,6 +40,14 @@ export function onSubmitRegistration({ password, email, displayName }) {
       })
     }
     console.log('ERROR')
+    confirm()
+    // return dispatch({
+    //   type: SHOW_MODAL,
+    //   payload: {
+    //     title: 'Error',
+    //     data: 'eeeeerrrrooooorrrr',
+    //   },
+    // })
     return false
   }
 }

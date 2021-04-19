@@ -9,6 +9,8 @@ import { FormStyled } from './Styled'
 import { FormItem } from '../../Components/FormItem'
 import { Button } from '../../Components/Button'
 import { validatePassword } from '../../Utils/validatePassword'
+// eslint-disable-next-line import/named
+import { Modal } from '../../Components/Modal'
 // import { prefixValues } from './constats'
 
 // const { Option } = Select
@@ -31,7 +33,19 @@ const tailFormItemLayout = {
   },
 }
 
-export const RegistrationFormCmp = ({ onSubmitRegistration }) => {
+export const RegistrationFormCmp = (
+  {
+    onSubmitRegistration,
+    visible,
+    title,
+    data,
+    onCloseModal,
+  },
+) => {
+  console.log(visible,
+    title,
+    data,
+    onCloseModal)
   const [form] = Form.useForm()
 
   // const prefixSelector = (
@@ -45,66 +59,76 @@ export const RegistrationFormCmp = ({ onSubmitRegistration }) => {
   // )
 
   return (
-    <FormStyled
-      {...formItemLayout}
-      form={form}
-      name="register"
-      onFinish={(data) => onSubmitRegistration(data)}
-      // initialValues={{
-      //   prefix: prefixValues[0],
-      // }}
-      scrollToFirstError
-    >
-      <FormItem
-        name="email"
-        label="Email"
-        rules={[
-          {
-            type: 'email',
-            message: 'The input is not valid E-mail!',
-          },
-          {
-            required: true,
-            message: 'Please input your E-mail!',
-          },
-        ]}
+    <>
+      <FormStyled
+        {...formItemLayout}
+        form={form}
+        name="register"
+        onFinish={(dataUser) => onSubmitRegistration(dataUser)}
+        // initialValues={{
+        //   prefix: prefixValues[0],
+        // }}
+        scrollToFirstError
       >
-        <Input />
-      </FormItem>
+        <FormItem
+          name="email"
+          label="Email"
+          rules={[
+            {
+              type: 'email',
+              message: 'The input is not valid E-mail!',
+            },
+            {
+              required: true,
+              message: 'Please input your E-mail!',
+            },
+          ]}
+        >
+          <Input />
+        </FormItem>
 
-      <FormItem
-        name="password"
-        label="Password"
-        rules={[
-          {
-            required: true,
-            message: 'Please input your password!',
-          },
-          { validator: validatePassword },
-        ]}
-        hasFeedback
-      >
-        <Input.Password />
-      </FormItem>
+        <FormItem
+          name="password"
+          label="Password"
+          rules={[
+            {
+              required: true,
+              message: 'Please input your password!',
+            },
+            { validator: validatePassword },
+          ]}
+          hasFeedback
+        >
+          <Input.Password />
+        </FormItem>
 
-      <FormItem
-        name="displayName"
-        label="Name"
-        rules={[
-          {
-            required: true,
-            message: 'Please input your name!',
-            whitespace: true,
-          }]}
+        <FormItem
+          name="displayName"
+          label="Name"
+          rules={[
+            {
+              required: true,
+              message: 'Please input your name!',
+              whitespace: true,
+            }]}
+        >
+          <Input />
+        </FormItem>
+        <FormItem {...tailFormItemLayout}>
+          <Button type="primary" htmlType="submit">
+            Register
+          </Button>
+        </FormItem>
+      </FormStyled>
+      <Modal
+        title={title}
+        visible={visible}
+        afterClose={onCloseModal}
+        footer={null}
       >
-        <Input />
-      </FormItem>
-      <FormItem {...tailFormItemLayout}>
-        <Button type="primary" htmlType="submit">
-          Register
-        </Button>
-      </FormItem>
-    </FormStyled>
+        {data}
+      </Modal>
+    </>
   )
 }
 // <FormItem

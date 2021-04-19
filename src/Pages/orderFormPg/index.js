@@ -1,0 +1,1 @@
+export { orderFormPg } from './Component'

@@ -4,20 +4,27 @@ import thunk from 'redux-thunk'
 import { rootReducer } from './reducers'
 import { routes } from './routes'
 
-const UserDataInitialState = {
+const userDataInitialState = {
   isLogged: false,
 }
 
-const MenuInitialState = {
+const menuInitialState = {
   selectedKey: routes[0].path,
+}
+
+const modalInitialState = {
+  visible: false,
+  title: '',
+  data: null,
 }
 
 // константы для стейтов
 export const store = createStore(
   rootReducer,
   {
-    userData: UserDataInitialState,
-    menuState: MenuInitialState,
+    userData: userDataInitialState,
+    menuState: menuInitialState,
+    modal: modalInitialState,
   },
   composeWithDevTools(applyMiddleware(thunk)),
 )

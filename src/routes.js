@@ -1,4 +1,5 @@
 import { NotFoundPg } from './Pages/notFoundPage'
+import { orderFormPg } from './Pages/orderFormPg'
 import { IdentificationContainer } from './modules/Identification'
 import {
   PATH_HOME,
@@ -18,7 +19,7 @@ export const routes = [
     path: PATH_ORDER_FORM,
     title: 'Order form',
     isExact: true,
-    component: NotFoundPg,
+    component: orderFormPg,
   },
   {
     path: PATH_GALLERY,
