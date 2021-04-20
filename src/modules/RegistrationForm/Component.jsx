@@ -9,8 +9,10 @@ import { FormStyled } from './Styled'
 import { FormItem } from '../../Components/FormItem'
 import { Button } from '../../Components/Button'
 import { validatePassword } from '../../Utils/validatePassword'
-// eslint-disable-next-line import/named
-import { Modal } from '../../Components/Modal'
+import { MODAL_STATUS_ERROR_REGISTRATION } from '../../constats'
+import { modalError } from '../../Utils/showModal'
+import { Spin } from '../../Components/Spin'
+
 // import { prefixValues } from './constats'
 
 // const { Option } = Select
@@ -36,16 +38,12 @@ const tailFormItemLayout = {
 export const RegistrationFormCmp = (
   {
     onSubmitRegistration,
-    visible,
-    title,
-    data,
-    onCloseModal,
+    modalStatus,
+    modalTitle,
+    modalContent,
+    spinStatus,
   },
 ) => {
-  console.log(visible,
-    title,
-    data,
-    onCloseModal)
   const [form] = Form.useForm()
 
   // const prefixSelector = (
@@ -57,6 +55,15 @@ export const RegistrationFormCmp = (
   //     </FormSelect>
   //   </Form.Item>
   // )
+  if (modalStatus === MODAL_STATUS_ERROR_REGISTRATION) {
+    modalError({ modalTitle, modalContent })
+  }
+
+  if (spinStatus) {
+    return (
+      <Spin />
+    )
+  }
 
   return (
     <>
@@ -120,14 +127,6 @@ export const RegistrationFormCmp = (
           </Button>
         </FormItem>
       </FormStyled>
-      <Modal
-        title={title}
-        visible={visible}
-        afterClose={onCloseModal}
-        footer={null}
-      >
-        {data}
-      </Modal>
     </>
   )
 }

@@ -1,8 +1,8 @@
 import React from 'react'
 import { SelectStyled } from './Styled'
 
-export function FormSelect() {
+export function FormSelect(props) {
   return (
-    <SelectStyled />
+    <SelectStyled {...props} />
   )
 }

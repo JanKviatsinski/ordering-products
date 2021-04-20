@@ -1,14 +1,21 @@
 import connect from 'react-redux/lib/connect/connect'
 import { OrderFormCmp } from './Component'
-import { getMenuSelectedKey } from '../../selectors/menuStateSelectors'
-import { selectMenuKey } from '../../actions/menuActions'
+import {
+  getModalContent,
+  getModalStatus,
+  getModalTitle, getSpinStatus,
+} from '../../selectors/appSelectors'
+import { onSubmitOrderForm } from '../../actions/orderActions'
 
 const mapStateToProps = (state) => ({
-  selectedKey: getMenuSelectedKey(state),
+  modalStatus: getModalStatus(state),
+  modalTitle: getModalTitle(state),
+  modalContent: getModalContent(state),
+  spinStatus: getSpinStatus(state),
 })
 
 const mapDispatchToProps = {
-  selectMenuKey,
+  onSubmitOrderForm,
 }
 
 export const OrderForm = connect(mapStateToProps, mapDispatchToProps)(OrderFormCmp)

@@ -6,16 +6,18 @@ import { routes } from './routes'
 
 const userDataInitialState = {
   isLogged: false,
+  localId: null,
 }
 
 const menuInitialState = {
   selectedKey: routes[0].path,
 }
 
-const modalInitialState = {
-  visible: false,
-  title: '',
-  data: null,
+const appInitialState = {
+  modalStatus: null,
+  modalTitle: '',
+  modalContent: null,
+  spinStatus: false,
 }
 
 // константы для стейтов
@@ -24,7 +26,7 @@ export const store = createStore(
   {
     userData: userDataInitialState,
     menuState: menuInitialState,
-    modal: modalInitialState,
+    app: appInitialState,
   },
   composeWithDevTools(applyMiddleware(thunk)),
 )

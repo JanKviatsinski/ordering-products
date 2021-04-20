@@ -1,22 +1,22 @@
 import connect from 'react-redux/lib/connect/connect'
 import { RegistrationFormCmp } from './Component'
-import { onSubmitRegistration } from '../../actions/userDataActons'
+import { onSubmitRegistration } from '../../actions/userDataActions'
 import {
-  getModalData,
+  getModalContent,
   getModalTitle,
-  getModalVisible,
-} from '../../selectors/modalSelectors'
-import { onCloseModal } from '../../actions/modalActions'
+  getModalStatus,
+  getSpinStatus,
+} from '../../selectors/appSelectors'
 
 const mapStateToProps = (state) => ({
-  visible: getModalVisible(state),
-  title: getModalTitle(state),
-  data: getModalData(state),
+  modalStatus: getModalStatus(state),
+  modalTitle: getModalTitle(state),
+  modalContent: getModalContent(state),
+  spinStatus: getSpinStatus(state),
 })
 
 const mapDispatchToProps = {
   onSubmitRegistration,
-  onCloseModal,
 }
 
 export const RegistrationForm = connect(mapStateToProps, mapDispatchToProps)(

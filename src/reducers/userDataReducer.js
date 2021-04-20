@@ -1,4 +1,4 @@
-import { USER_IS_LOGGED } from '../actions/userDataActons'
+import { USER_IS_LOGGED } from '../actions/userDataActions'
 
 export function userDataReducer(state = {}, action) {
   switch (action.type) {
