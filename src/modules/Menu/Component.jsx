@@ -3,11 +3,15 @@ import { Link as RouterLink } from 'react-router-dom'
 import { MenuStyled } from './Styled'
 import { MenuItem } from '../../Components/MenuItem'
 import { routes } from '../../routes'
+import { history } from '../../history'
+import { onSelectMenuKey } from './onSelectMenuKey'
 
-export function MenuCmp({ selectMenuKey, selectedKey }) {
+export function Menu() {
+  const selectedKey = history.location.pathname
+
   return (
     <MenuStyled
-      onClick={selectMenuKey}
+      onClick={onSelectMenuKey}
       selectedKeys={[selectedKey]}
       mode="vertical"
     >

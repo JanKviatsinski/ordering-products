@@ -9,7 +9,7 @@ import { FormStyled } from './Styled'
 import { FormItem } from '../../Components/FormItem'
 import { Button } from '../../Components/Button'
 import { validatePassword } from '../../Utils/validatePassword'
-import { MODAL_STATUS_ERROR_REGISTRATION } from '../../constats'
+import { MODAL_STATUS_ERROR } from '../../constats'
 import { modalError } from '../../Utils/showModal'
 import { Spin } from '../../Components/Spin'
 
@@ -55,7 +55,7 @@ export const RegistrationFormCmp = (
   //     </FormSelect>
   //   </Form.Item>
   // )
-  if (modalStatus === MODAL_STATUS_ERROR_REGISTRATION) {
+  if (modalStatus === MODAL_STATUS_ERROR) {
     modalError({ modalTitle, modalContent })
   }
 

@@ -3,11 +3,11 @@ import { authentication } from '../api/authentication'
 import { history } from '../history'
 import { PATH_ORDER_FORM } from '../pathes'
 import {
-  MODAL_STATUS_ERROR_AUTHENTICATION,
-  MODAL_STATUS_ERROR_REGISTRATION, MODAL_STATUS_SUCCESS_AUTHENTICATION,
-  MODAL_STATUS_SUCCESS_REGISTRATION,
+  MODAL_STATUS_ERROR,
+  MODAL_STATUS_SUCCESS,
   SHOW_MODAL, SPIN_OF, SPIN_ON,
 } from '../constats'
+import { addDataToStorage } from '../api/addDataToStorage'
 
 const MODULE_NAME = 'UserData'
 export const USER_IS_LOGGED = `${MODULE_NAME}/USER_IS_LOGGED`
@@ -28,13 +28,22 @@ export function onSubmitRegistration({ password, email, displayName }) {
       type: SPIN_OF,
     })
 
+    const userData = {
+      password,
+      email,
+      displayName,
+      localId,
+      isLogged: true,
+    }
+
     if (idToken !== undefined) {
-      console.log('YES')
+      addDataToStorage('userData', userData)
+      console.log(localStorage)
 
       dispatch({
         type: SHOW_MODAL,
         payload: {
-          modalStatus: MODAL_STATUS_SUCCESS_REGISTRATION,
+          modalStatus: MODAL_STATUS_SUCCESS,
           modalTitle: 'SUCCESS',
           modalContent: 'SUCCESS',
         },
@@ -44,9 +53,7 @@ export function onSubmitRegistration({ password, email, displayName }) {
 
       return dispatch({
         type: USER_IS_LOGGED,
-        payload: {
-          password, email, displayName, idToken, localId,
-        },
+        payload: userData,
       })
     }
     console.log('ERROR')
@@ -54,7 +61,7 @@ export function onSubmitRegistration({ password, email, displayName }) {
     return dispatch({
       type: SHOW_MODAL,
       payload: {
-        modalStatus: MODAL_STATUS_ERROR_REGISTRATION,
+        modalStatus: MODAL_STATUS_ERROR,
         modalTitle: 'ERROR',
         modalContent: 'ERROR',
       },
@@ -76,14 +83,24 @@ export function onSubmitAuthentication({ email, password }) {
       type: SPIN_OF,
     })
 
+    const userData = {
+      password,
+      email,
+      displayName,
+      localId,
+      isLogged: true,
+    }
+
     if (idToken !== undefined) {
-      console.log('yes', displayName, idToken)
+      addDataToStorage('userData', userData)
+      console.log(localStorage)
+
       history.push(PATH_ORDER_FORM)
 
       dispatch({
         type: SHOW_MODAL,
         payload: {
-          modalStatus: MODAL_STATUS_SUCCESS_AUTHENTICATION,
+          modalStatus: MODAL_STATUS_SUCCESS,
           modalTitle: 'SUCCESS',
           modalContent: 'SUCCESS',
         },
@@ -91,9 +108,7 @@ export function onSubmitAuthentication({ email, password }) {
 
       return dispatch({
         type: USER_IS_LOGGED,
-        payload: {
-          password, email, displayName, idToken, localId,
-        },
+        payload: userData,
       })
     }
 
@@ -101,17 +116,10 @@ export function onSubmitAuthentication({ email, password }) {
     return dispatch({
       type: SHOW_MODAL,
       payload: {
-        modalStatus: MODAL_STATUS_ERROR_AUTHENTICATION,
+        modalStatus: MODAL_STATUS_ERROR,
         modalTitle: 'ERROR',
         modalContent: 'ERROR',
       },
     })
   }
 }
-
-// const localId = resultRegistration.localId
-
-// const responseDataUser = await getUserData(idToken)
-// const resultDataUser = await responseDataUser.json()
-//
-// console.log(resultDataUser)

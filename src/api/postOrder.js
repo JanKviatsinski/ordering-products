@@ -1,8 +1,6 @@
-import { URL_POST_ORDER } from './constants'
-
-export function postOrder(data) {
+export function postOrder({ data, UrlPostOrder }) {
   return fetch(
-    URL_POST_ORDER,
+    UrlPostOrder,
     {
       method: 'POST',
       headers: {

@@ -1,24 +1,20 @@
 import React from 'react'
 import { LogInOutStyled } from './Styled'
 import { Button } from '../../Components/Button'
+import { onClickLogInBtn } from './onClickLogInBtn'
+import { onClickLogOutBtn } from './onClickLogOutBtn'
 
 // как лучше назвать этот компонент?
-export function LogInOutCmp({ logged, clickLogInOutBtn }) {
+export function LogInOutCmp({ logged }) {
   let btnText
   let onClickFunc
 
   if (logged) {
-    btnText = 'LogOut'
-    onClickFunc = () => {
-      console.log('POST LogOut')
-    }// это сделаю когда будет готова регистрация
+    btnText = 'Log Out'
+    onClickFunc = () => onClickLogOutBtn()
   } else {
-    btnText = 'LogIn'
-    onClickFunc = () => {
-      console.log('asas')
-      clickLogInOutBtn()
-      // props.clickLogInOutBtn('/identification')
-    }
+    btnText = 'Log In'
+    onClickFunc = () => onClickLogInBtn()
   }
 
   return (

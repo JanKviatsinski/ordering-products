@@ -6,8 +6,8 @@ import { FormItem } from '../../Components/FormItem'
 import { Checkbox } from '../../Components/Checkbox'
 import { Link } from '../../Components/Link'
 import { validatePassword } from '../../Utils/validatePassword'
-import { MODAL_STATUS_ERROR_AUTHENTICATION } from '../../constats'
-import { modalError } from '../../Utils/showModal'
+import { MODAL_STATUS_INFO } from '../../constats'
+import { modalInfo } from '../../Utils/showModal'
 import { Spin } from '../../Components/Spin'
 
 export function AuthenticationFormCmp(
@@ -19,17 +19,9 @@ export function AuthenticationFormCmp(
     spinStatus,
   },
 ) {
-  // console.log(
-  //   modalStatus,
-  //   modalTitle,
-  //   modalContent,
-  // )
-  if (modalStatus === MODAL_STATUS_ERROR_AUTHENTICATION) {
-    modalError({ modalTitle, modalContent })
-  }
-  const onFinish = (values) => {
-    console.log('Received values of form: ', values)
-    onSubmitAuthentication({ ...values })
+  // два раза модалка
+  if (modalStatus === MODAL_STATUS_INFO) {
+    modalInfo({ modalTitle, modalContent })
   }
 
   if (spinStatus) {
@@ -48,7 +40,7 @@ export function AuthenticationFormCmp(
       initialValues={{
         remember: true,
       }}
-      onFinish={onFinish}
+      onFinish={(values) => onSubmitAuthentication({ ...values })}
     >
       <FormItem
         name="email"

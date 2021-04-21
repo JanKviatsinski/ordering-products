@@ -2,15 +2,10 @@ import { createStore, applyMiddleware } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 import { rootReducer } from './reducers'
-import { routes } from './routes'
 
 const userDataInitialState = {
   isLogged: false,
   localId: null,
-}
-
-const menuInitialState = {
-  selectedKey: routes[0].path,
 }
 
 const appInitialState = {
@@ -20,13 +15,18 @@ const appInitialState = {
   spinStatus: false,
 }
 
+function getInitialState(keyFromStorage, alternativeObj) {
+  return localStorage.getItem(keyFromStorage)
+    ? JSON.parse(localStorage.getItem(keyFromStorage)) : alternativeObj
+  // сократить
+}
+
 // константы для стейтов
 export const store = createStore(
   rootReducer,
   {
-    userData: userDataInitialState,
-    menuState: menuInitialState,
-    app: appInitialState,
+    userData: getInitialState('userData', userDataInitialState),
+    app: getInitialState('app', appInitialState),
   },
   composeWithDevTools(applyMiddleware(thunk)),
 )

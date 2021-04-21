@@ -1,14 +1,9 @@
 import connect from 'react-redux/lib/connect/connect'
 import { LogInOutCmp } from './Component'
 import { getUserLoggedStatus } from '../../selectors/userDataSelectors'
-import { clickLogInOutBtn } from '../../actions/menuActions'
 
 const mapStateToProps = (state) => ({
   logged: getUserLoggedStatus(state),
 })
 
-const mapDispatchToProps = {
-  clickLogInOutBtn,
-}
-
-export const LogInOut = connect(mapStateToProps, mapDispatchToProps)(LogInOutCmp)
+export const LogInOut = connect(mapStateToProps)(LogInOutCmp)

@@ -13,3 +13,10 @@ export function modalSuccess({ modalTitle, modalContent }) {
     content: modalContent,
   })
 }
+
+export function modalInfo({ modalTitle, modalContent }) {
+  Modal.info({
+    title: modalTitle,
+    content: modalContent,
+  })
+}

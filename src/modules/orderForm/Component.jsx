@@ -1,31 +1,55 @@
 import React from 'react'
 import { Input, Select } from 'antd'
+// import { useDispatch } from 'react-redux'
 import { Form } from '../../Components/Form'
 import {
-  MODAL_STATUS_SUCCESS_AUTHENTICATION, MODAL_STATUS_SUCCESS_REGISTRATION,
+  MODAL_STATUS_ERROR,
+  MODAL_STATUS_INFO,
+  MODAL_STATUS_SUCCESS,
 } from '../../constats'
-import { modalError } from '../../Utils/showModal'
+import {
+  modalError,
+  modalInfo,
+  modalSuccess,
+} from '../../Utils/showModal'
 import { prefixValues, selection } from './constants'
 import { FormSelect } from '../../Components/FormSelect'
 import { FormItem } from '../../Components/FormItem'
 import { validatePhoneNumber } from '../../Utils/validatePhoneNumber'
 import { Button } from '../../Components/Button'
-// import { FormStyled } from '../RegistrationForm/Styled'
+import { Spin } from '../../Components/Spin'
+import { getFromStorage } from '../../api/getFromStorage'
 
 const { Option } = Select
-
+// удалить modalStatus из стора
 export function OrderFormCmp(
   {
     modalStatus,
     modalTitle,
     modalContent,
+    spinStatus,
     onSubmitOrderForm,
   },
 ) {
-  if (
-    modalStatus === MODAL_STATUS_SUCCESS_AUTHENTICATION
-    || modalStatus === MODAL_STATUS_SUCCESS_REGISTRATION) {
-    modalError({ modalTitle, modalContent })
+  // const dispatch = useDispatch()
+
+  switch (modalStatus) {
+    case MODAL_STATUS_SUCCESS:
+      modalSuccess({ modalTitle, modalContent })
+      break
+    case MODAL_STATUS_ERROR:
+      modalError({ modalTitle, modalContent })
+      break
+    case MODAL_STATUS_INFO:
+      modalInfo({ modalTitle, modalContent })
+      break
+    default: break
+  }
+
+  if (spinStatus) {
+    return (
+      <Spin />
+    )
   }
 
   const formItemLayout = {
@@ -52,12 +76,15 @@ export function OrderFormCmp(
     </FormItem>
   )
 
+  const formDataFromStorage = getFromStorage('formData')
+
   return (
     <Form
       {...formItemLayout}
-      onFinish={(data) => onSubmitOrderForm(data)}
+      onFinish={(formData) => onSubmitOrderForm(formData)}
       initialValues={{
         prefix: prefixValues[0],
+        ...formDataFromStorage,
       }}
     >
       {selection.map((
@@ -69,7 +96,7 @@ export function OrderFormCmp(
       ) => (
         <FormItem
           key={name}
-          name={name}
+          name={name.toLowerCase()}
           label={name}
           hasFeedback
           rules={[
