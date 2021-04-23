@@ -3,7 +3,7 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 import { rootReducer } from './reducers'
 
-const userDataInitialState = {
+export const userDataInitialState = {
   isLogged: false,
   localId: null,
 }
@@ -18,7 +18,6 @@ const appInitialState = {
 function getInitialState(keyFromStorage, alternativeObj) {
   return localStorage.getItem(keyFromStorage)
     ? JSON.parse(localStorage.getItem(keyFromStorage)) : alternativeObj
-  // сократить
 }
 
 // константы для стейтов

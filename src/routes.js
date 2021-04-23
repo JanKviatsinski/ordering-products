@@ -7,6 +7,7 @@ import {
   PATH_GALLERY,
   PATH_REGISTRATION,
 } from './pathes'
+import { GalleryPg } from './Pages/galleryPg'
 
 export const routes = [
   {
@@ -25,7 +26,7 @@ export const routes = [
     path: PATH_GALLERY,
     title: 'Gallery',
     isExact: true,
-    component: NotFoundPg,
+    component: GalleryPg,
   },
   {
     path: PATH_REGISTRATION,

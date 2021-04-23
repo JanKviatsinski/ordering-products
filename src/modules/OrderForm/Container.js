@@ -6,6 +6,7 @@ import {
   getModalTitle, getSpinStatus,
 } from '../../selectors/appSelectors'
 import { onSubmitOrderForm } from '../../actions/orderActions'
+import { hideModal } from '../../actions/appActions'
 
 const mapStateToProps = (state) => ({
   modalStatus: getModalStatus(state),
@@ -16,6 +17,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   onSubmitOrderForm,
+  hideModal,
 }
 
 export const OrderForm = connect(mapStateToProps, mapDispatchToProps)(OrderFormCmp)

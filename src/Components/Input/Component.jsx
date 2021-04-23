@@ -1,8 +1,8 @@
 import React from 'react'
 import { InputStyled } from './Styled'
 
-export function Input() {
+export function Input(props) {
   return (
-    <InputStyled />
+    <InputStyled {...props} />
   )
 }

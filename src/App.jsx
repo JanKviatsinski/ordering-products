@@ -8,7 +8,7 @@ import { Layout } from './layout/layout'
 import { Menu } from './modules/Menu'
 import { OwnerDataCard } from './modules/OwnerData'
 import { MainMenuWrap } from './modules/MainMenuWrap'
-import { LogInOut } from './modules/LogIn.Out'
+import { LogInOut } from './modules/AuthenticationСontroller'
 import { routes } from './routes'
 
 export function App() {

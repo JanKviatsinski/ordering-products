@@ -1,11 +1,9 @@
 import React from 'react'
-import { Wrap } from './Styled'
-import { OrderForm } from '../../modules/orderForm'
+
+import { OrderForm } from '../../modules/OrderForm'
 
 export function orderFormPg() {
   return (
-    <Wrap>
-      <OrderForm />
-    </Wrap>
+    <OrderForm />
   )
 }

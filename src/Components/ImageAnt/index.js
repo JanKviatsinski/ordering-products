@@ -1,0 +1,1 @@
+export { ImageAnt } from './Component'

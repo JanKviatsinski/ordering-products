@@ -2,20 +2,14 @@ import React from 'react'
 import {
   Form,
   Input,
-  // Select,
 } from 'antd'
 import { FormStyled } from './Styled'
-// import { FormSelect } from '../../Components/FormSelect'
 import { FormItem } from '../../Components/FormItem'
 import { Button } from '../../Components/Button'
-import { validatePassword } from '../../Utils/validatePassword'
+import { validatePassword } from '../../utils/validatePassword'
 import { MODAL_STATUS_ERROR } from '../../constats'
-import { modalError } from '../../Utils/showModal'
+import { modalError } from '../../utils/showModal'
 import { Spin } from '../../Components/Spin'
-
-// import { prefixValues } from './constats'
-
-// const { Option } = Select
 
 const formItemLayout = {
   labelCol: {
@@ -38,6 +32,7 @@ const tailFormItemLayout = {
 export const RegistrationFormCmp = (
   {
     onSubmitRegistration,
+    hideModal,
     modalStatus,
     modalTitle,
     modalContent,
@@ -46,17 +41,8 @@ export const RegistrationFormCmp = (
 ) => {
   const [form] = Form.useForm()
 
-  // const prefixSelector = (
-  //   <Form.Item name="prefix" noStyle>
-  //     <FormSelect>
-  //       {prefixValues.map(
-  //         (prefix) => <Option key={prefix} value={prefix}>{prefix}</Option>,
-  //       )}
-  //     </FormSelect>
-  //   </Form.Item>
-  // )
   if (modalStatus === MODAL_STATUS_ERROR) {
-    modalError({ modalTitle, modalContent })
+    modalError({ modalTitle, modalContent, hideModal })
   }
 
   if (spinStatus) {
@@ -72,9 +58,6 @@ export const RegistrationFormCmp = (
         form={form}
         name="register"
         onFinish={(dataUser) => onSubmitRegistration(dataUser)}
-        // initialValues={{
-        //   prefix: prefixValues[0],
-        // }}
         scrollToFirstError
       >
         <FormItem
@@ -130,25 +113,3 @@ export const RegistrationFormCmp = (
     </>
   )
 }
-// <FormItem
-//   name="residence"
-// >
-//   <Input placeholder="Habitual Residence is optional" />
-// </FormItem>
-//
-// <FormItem
-//   name="phone"
-// >
-//   <Input
-//     addonBefore={prefixSelector}
-//     placeholder="Phone number is optional"
-//   />
-// </FormItem>
-//
-// <FormItem
-//   name="telegram"
-// >
-//   <Input
-//     placeholder="Enter the link to your telegram account! Is optional"
-//   />
-// </FormItem>

@@ -1,12 +1,13 @@
 import connect from 'react-redux/lib/connect/connect'
 import { AuthenticationFormCmp } from './Component'
-import { onSubmitAuthentication } from '../../actions/userDataActions'
+import { onSubmitAuthentication } from '../../actions/userDataActions/onSubmitAuthentication'
 import {
   getModalContent,
   getModalStatus,
   getModalTitle,
   getSpinStatus,
 } from '../../selectors/appSelectors'
+import { hideModal } from '../../actions/appActions'
 
 const mapStateToProps = (state) => ({
   modalStatus: getModalStatus(state),
@@ -17,6 +18,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   onSubmitAuthentication,
+  hideModal,
 }
 
 export const AuthenticationForm = connect(

@@ -1,0 +1,1 @@
+export { GalleryPg } from './Component'

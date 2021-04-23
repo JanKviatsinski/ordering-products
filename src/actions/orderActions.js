@@ -2,9 +2,7 @@ import {
   MODAL_STATUS_ERROR,
   MODAL_STATUS_INFO,
   MODAL_STATUS_SUCCESS,
-  SHOW_MODAL,
-  SPIN_OF,
-  SPIN_ON,
+  // SHOW_MODAL,
 } from '../constats'
 import { getUrlPostOrder } from '../api/getUrlPostOrder'
 import { history } from '../history'
@@ -15,6 +13,7 @@ import {
 } from '../selectors/userDataSelectors'
 import { PATH_AUTHENTICATION, PATH_REGISTRATION } from '../pathes'
 import { addDataToStorage } from '../api/addDataToStorage'
+import { showModal, spinOff, spinOn } from './appActions'
 
 // const MODULE_NAME = 'ORDER_FORM'
 // export const POST_ORDER_SUCCESS = `${MODULE_NAME}/POST_ORDER_SUCCESS`
@@ -28,14 +27,13 @@ export function onSubmitOrderForm(formData) {
     if (!localId) {
       addDataToStorage('formData', formData)
       history.push(`${PATH_REGISTRATION}${PATH_AUTHENTICATION}`)
-      dispatch({
-        type: SHOW_MODAL,
-        payload: {
+      dispatch(
+        showModal({
           modalStatus: MODAL_STATUS_INFO,
           modalTitle: 'Identify yourself',
           modalContent: 'Identify yourself',
-        },
-      })
+        }),
+      )
       return false
     }
     const UrlPostOrder = getUrlPostOrder(localId)
@@ -47,39 +45,33 @@ export function onSubmitOrderForm(formData) {
     }
     console.log(data)
 
-    dispatch({
-      type: SPIN_ON,
-    })
+    dispatch(spinOn())
 
     const responsePostOrder = await postOrder({ data, UrlPostOrder })
     const { name } = await responsePostOrder.json()
     console.log(name)
 
-    dispatch({
-      type: SPIN_OF,
-    })
+    dispatch(spinOff())
 
     if (name !== undefined) {
       console.log('save order')
 
-      return dispatch({
-        type: SHOW_MODAL,
-        payload: {
+      return dispatch(
+        showModal({
           modalStatus: MODAL_STATUS_SUCCESS,
           modalTitle: 'SUCCESS save order',
           modalContent: 'SUCCESS save order',
-        },
-      })
+        }),
+      )
     }
     console.log('ERROR')
 
-    return dispatch({
-      type: SHOW_MODAL,
-      payload: {
+    return dispatch(
+      showModal({
         modalStatus: MODAL_STATUS_ERROR,
         modalTitle: 'ERROR save order',
         modalContent: 'ERROR save order',
-      },
-    })
+      }),
+    )
   }
 }

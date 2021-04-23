@@ -1,23 +1,25 @@
 import {
-  SHOW_MODAL,
-  SPIN_OF,
-  SPIN_ON,
-} from '../constats'
+  SHOW_MODAL, CLOSE_MODAL, SPIN_OFF, SPIN_ON,
+} from '../actions/appActions'
 
 export function appReducer(state = {}, action) {
   switch (action.type) {
     case SHOW_MODAL:
       return {
         ...state.app,
-        // modalStatus: true,
         ...action.payload,
+      }
+    case CLOSE_MODAL:
+      return {
+        ...state.app,
+        modalStatus: null,
       }
     case SPIN_ON:
       return {
         ...state.app,
         spinStatus: true,
       }
-    case SPIN_OF:
+    case SPIN_OFF:
       return {
         ...state.app,
         spinStatus: false,

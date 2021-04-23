@@ -1,6 +1,3 @@
-export const SHOW_MODAL = 'SHOW_MODAL'
 export const MODAL_STATUS_ERROR = 'ERROR'
 export const MODAL_STATUS_SUCCESS = 'SUCCESS'
 export const MODAL_STATUS_INFO = 'INFO'
-export const SPIN_ON = 'SPIN ON'
-export const SPIN_OF = 'SPIN OF'

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Input, Select } from 'antd'
-// import { useDispatch } from 'react-redux'
 import { Form } from '../../Components/Form'
 import {
   MODAL_STATUS_ERROR,
@@ -11,17 +10,17 @@ import {
   modalError,
   modalInfo,
   modalSuccess,
-} from '../../Utils/showModal'
+} from '../../utils/showModal'
 import { prefixValues, selection } from './constants'
 import { FormSelect } from '../../Components/FormSelect'
 import { FormItem } from '../../Components/FormItem'
-import { validatePhoneNumber } from '../../Utils/validatePhoneNumber'
+import { validatePhoneNumber } from '../../utils/validatePhoneNumber'
 import { Button } from '../../Components/Button'
 import { Spin } from '../../Components/Spin'
 import { getFromStorage } from '../../api/getFromStorage'
 
 const { Option } = Select
-// удалить modalStatus из стора
+
 export function OrderFormCmp(
   {
     modalStatus,
@@ -29,19 +28,18 @@ export function OrderFormCmp(
     modalContent,
     spinStatus,
     onSubmitOrderForm,
+    hideModal,
   },
 ) {
-  // const dispatch = useDispatch()
-
   switch (modalStatus) {
     case MODAL_STATUS_SUCCESS:
-      modalSuccess({ modalTitle, modalContent })
+      modalSuccess({ modalTitle, modalContent, hideModal })
       break
     case MODAL_STATUS_ERROR:
-      modalError({ modalTitle, modalContent })
+      modalError({ modalTitle, modalContent, hideModal })
       break
     case MODAL_STATUS_INFO:
-      modalInfo({ modalTitle, modalContent })
+      modalInfo({ modalTitle, modalContent, hideModal })
       break
     default: break
   }

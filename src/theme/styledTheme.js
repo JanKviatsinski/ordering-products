@@ -4,10 +4,12 @@ export const theme = {
   colors: {
     fontColor1: 'rgb(221, 221, 221)',
     fontColor2: 'rgb(0, 0, 0)',
-    primary: '#1a581a',
+    primary: 'rgb(26, 88, 26)',
+    secondary: 'rgb(203,146,146)',
   },
   radii: {
     radius0: '0',
+    radius1: '4px',
   },
   paddings: {
     padding1: '4px',

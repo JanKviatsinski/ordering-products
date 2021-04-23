@@ -1,27 +1,27 @@
 import React from 'react'
 import { Input } from 'antd'
+import { Link } from 'react-router-dom'
 import { Form } from '../../Components/Form'
 import { Button } from '../../Components/Button'
 import { FormItem } from '../../Components/FormItem'
-import { Checkbox } from '../../Components/Checkbox'
-import { Link } from '../../Components/Link'
-import { validatePassword } from '../../Utils/validatePassword'
+import { validatePassword } from '../../utils/validatePassword'
 import { MODAL_STATUS_INFO } from '../../constats'
-import { modalInfo } from '../../Utils/showModal'
+import { modalInfo } from '../../utils/showModal'
 import { Spin } from '../../Components/Spin'
+import { PATH_REGISTRATION } from '../../pathes'
 
 export function AuthenticationFormCmp(
   {
     onSubmitAuthentication,
+    hideModal,
     modalStatus,
     modalTitle,
     modalContent,
     spinStatus,
   },
 ) {
-  // два раза модалка
   if (modalStatus === MODAL_STATUS_INFO) {
-    modalInfo({ modalTitle, modalContent })
+    modalInfo({ modalTitle, modalContent, hideModal })
   }
 
   if (spinStatus) {
@@ -29,10 +29,6 @@ export function AuthenticationFormCmp(
       <Spin />
     )
   }
-
-  // const formItemLayout = {
-  //   wrapperCol: { span: 30 },
-  // }
 
   return (
     <Form
@@ -68,21 +64,13 @@ export function AuthenticationFormCmp(
           placeholder="Password"
         />
       </FormItem>
-      <FormItem>
-        <FormItem name="remember" valuePropName="checked" noStyle>
-          <Checkbox>
-            Remember me
-          </Checkbox>
-        </FormItem>
-        <Link href="https://www.google.com">
-          Forgot password
-        </Link>
-      </FormItem>
 
       <FormItem>
         <Button type="primary" htmlType="submit">
           Log in
         </Button>
+        {' Or '}
+        <Link to={PATH_REGISTRATION}>register now!</Link>
       </FormItem>
     </Form>
   )
