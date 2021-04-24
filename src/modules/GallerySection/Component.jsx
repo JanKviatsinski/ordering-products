@@ -8,7 +8,7 @@ import { ImageAnt } from '../../Components/ImageAnt'
 import { AllPhotosStyled } from './Styled'
 import { Image } from '../../Components/Image'
 
-export function GallerySection(props) {
+export function GallerySection({ title, text, photos }) {
   const ref = useRef()
 
   function onClickPhoto(e) {
@@ -20,8 +20,8 @@ export function GallerySection(props) {
   return (
     <>
       <Typography>
-        <Title level={4} text={props.title} />
-        <Paragraph text={props.text} />
+        <Title level={4} text={title} />
+        <Paragraph text={text} />
       </Typography>
 
       <Carousel
@@ -29,7 +29,7 @@ export function GallerySection(props) {
         dots={false}
       >
         {
-          props.photos.map((photoSrc) => (
+          photos.map((photoSrc) => (
             <ImageAnt
               key={photoSrc}
               padding="50px"
@@ -42,7 +42,7 @@ export function GallerySection(props) {
 
       <AllPhotosStyled onClick={onClickPhoto}>
         {
-          props.photos.map((photoSrc, index) => (
+          photos.map((photoSrc, index) => (
             <Image
               id={index}
               // data-x="ccc"

@@ -31,6 +31,7 @@ export function OwnerDataCard() {
             alt="phone"
           />
         </Link>,
+
         <Link href={TELEGRAM_HREF_OWNER}>
           <Image
             src={telegramImg}

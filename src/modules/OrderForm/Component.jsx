@@ -11,13 +11,14 @@ import {
   modalInfo,
   modalSuccess,
 } from '../../utils/showModal'
-import { prefixValues, selection } from './constants'
+import { prefixes, selection } from './constants'
 import { FormSelect } from '../../Components/FormSelect'
 import { FormItem } from '../../Components/FormItem'
 import { validatePhoneNumber } from '../../utils/validatePhoneNumber'
 import { Button } from '../../Components/Button'
 import { Spin } from '../../Components/Spin'
 import { getFromStorage } from '../../api/getFromStorage'
+import { Title } from '../../Components/Title'
 
 const { Option } = Select
 
@@ -41,7 +42,8 @@ export function OrderFormCmp(
     case MODAL_STATUS_INFO:
       modalInfo({ modalTitle, modalContent, hideModal })
       break
-    default: break
+    default:
+      break
   }
 
   if (spinStatus) {
@@ -67,7 +69,7 @@ export function OrderFormCmp(
   const prefixSelector = (
     <FormItem name="prefix" noStyle>
       <FormSelect>
-        {prefixValues.map(
+        {prefixes.map(
           (prefix) => <Option key={prefix} value={prefix}>{prefix}</Option>,
         )}
       </FormSelect>
@@ -77,64 +79,68 @@ export function OrderFormCmp(
   const formDataFromStorage = getFromStorage('formData')
 
   return (
-    <Form
-      {...formItemLayout}
-      onFinish={(formData) => onSubmitOrderForm(formData)}
-      initialValues={{
-        prefix: prefixValues[0],
-        ...formDataFromStorage,
-      }}
-    >
-      {selection.map((
-        {
-          name,
-          values,
-          required,
-        },
-      ) => (
+    <>
+      <Title level={3} text="Check the boxes to make an order" />
+
+      <Form
+        {...formItemLayout}
+        onFinish={(formData) => onSubmitOrderForm(formData)}
+        initialValues={{
+          prefix: prefixes[0],
+          ...formDataFromStorage,
+        }}
+      >
+        {selection.map((
+          {
+            name,
+            values,
+            required,
+          },
+        ) => (
+          <FormItem
+            key={name}
+            name={name.toLowerCase()}
+            label={name}
+            hasFeedback
+            rules={[
+              {
+                required,
+                message: `Please select ${name.toLowerCase()}!`,
+              }]}
+          >
+            <FormSelect>
+              {values.map(
+                (value) => <Option key={value} value={value}>{value}</Option>,
+              )}
+            </FormSelect>
+          </FormItem>
+        ))}
+
         <FormItem
-          key={name}
-          name={name.toLowerCase()}
-          label={name}
-          hasFeedback
+          name="phone"
+          label="Phone number"
           rules={[
-            {
-              required,
-              message: `Please select ${name.toLowerCase()}!`,
-            }]}
+            { validator: validatePhoneNumber },
+          ]}
         >
-          <FormSelect>
-            {values.map(
-              (value) => <Option key={value} value={value}>{value}</Option>,
-            )}
-          </FormSelect>
+          <Input
+            addonBefore={prefixSelector}
+          />
         </FormItem>
-      ))}
 
-      <FormItem
-        name="phone"
-        label="Phone number"
-        rules={[
-          { validator: validatePhoneNumber },
-        ]}
-      >
-        <Input
-          addonBefore={prefixSelector}
-        />
-      </FormItem>
+        <FormItem
+          name="telegram"
+          label="Link to your telegram account"
+        >
+          <Input />
+        </FormItem>
 
-      <FormItem
-        name="telegram"
-        label="Link to your telegram account"
-      >
-        <Input />
-      </FormItem>
-
-      <FormItem {...tailFormItemLayout}>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </FormItem>
-    </Form>
+        <FormItem {...tailFormItemLayout}>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </FormItem>
+      </Form>
+    </>
   )
 }

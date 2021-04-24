@@ -7,10 +7,13 @@ import {
   PRODUCTS_PHOTOS_TITLE_TEXT, productsPhotos,
 } from './constants'
 import { GalleryPgStyled } from './Styled'
+import { Title } from '../../Components/Title'
 
 export function GalleryPg() {
   return (
     <GalleryPgStyled>
+      <Title level={3} text="Our photos" />
+
       <GallerySection
         title={PRODUCTS_PHOTOS_TITLE_TEXT}
         text={PRODUCTS_PHOTOS_TEXT}

@@ -1,8 +1,8 @@
 import React from 'react'
 import { TypographyStyled } from './Styled'
 
-export function Typography({ children }) {
+export function Typography(props) {
   return (
-    <TypographyStyled>{children}</TypographyStyled>
+    <TypographyStyled {...props}>{props.children}</TypographyStyled>
   )
 }

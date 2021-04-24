@@ -9,6 +9,7 @@ import { MODAL_STATUS_INFO } from '../../constats'
 import { modalInfo } from '../../utils/showModal'
 import { Spin } from '../../Components/Spin'
 import { PATH_REGISTRATION } from '../../pathes'
+import { Title } from '../../Components/Title'
 
 export function AuthenticationFormCmp(
   {
@@ -31,47 +32,51 @@ export function AuthenticationFormCmp(
   }
 
   return (
-    <Form
-      name="normal_login"
-      initialValues={{
-        remember: true,
-      }}
-      onFinish={(values) => onSubmitAuthentication({ ...values })}
-    >
-      <FormItem
-        name="email"
-        rules={[
-          {
-            required: true,
-            message: 'Please input your Email!',
-          },
-        ]}
-      >
-        <Input placeholder="Email" />
-      </FormItem>
-      <FormItem
-        name="password"
-        rules={[
-          {
-            required: true,
-            message: 'Please input your password!',
-          },
-          { validator: validatePassword },
-        ]}
-      >
-        <Input
-          type="password"
-          placeholder="Password"
-        />
-      </FormItem>
+    <>
+      <Title level={4} text="Enter your email and password" />
 
-      <FormItem>
-        <Button type="primary" htmlType="submit">
-          Log in
-        </Button>
-        {' Or '}
-        <Link to={PATH_REGISTRATION}>register now!</Link>
-      </FormItem>
-    </Form>
+      <Form
+        name="normal_login"
+        initialValues={{
+          remember: true,
+        }}
+        onFinish={(values) => onSubmitAuthentication({ ...values })}
+      >
+        <FormItem
+          name="email"
+          rules={[
+            {
+              required: true,
+              message: 'Please input your Email!',
+            },
+          ]}
+        >
+          <Input placeholder="Email" />
+        </FormItem>
+        <FormItem
+          name="password"
+          rules={[
+            {
+              required: true,
+              message: 'Please input your password!',
+            },
+            { validator: validatePassword },
+          ]}
+        >
+          <Input
+            type="password"
+            placeholder="Password"
+          />
+        </FormItem>
+
+        <FormItem>
+          <Button type="primary" htmlType="submit">
+            Log in
+          </Button>
+          {' Or '}
+          <Link to={PATH_REGISTRATION}>register now!</Link>
+        </FormItem>
+      </Form>
+    </>
   )
 }

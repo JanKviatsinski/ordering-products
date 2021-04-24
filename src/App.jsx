@@ -5,22 +5,12 @@ import { Content } from './layout/Content'
 import { Footer } from './layout/Footer'
 import { NotFoundPg } from './Pages/notFoundPage'
 import { Layout } from './layout/layout'
-import { Menu } from './modules/Menu'
-import { OwnerDataCard } from './modules/OwnerData'
-import { MainMenuWrap } from './modules/MainMenuWrap'
-import { LogInOut } from './modules/AuthenticationСontroller'
 import { routes } from './routes'
 
 export function App() {
   return (
     <Layout>
-      <Header>
-        <OwnerDataCard />
-        <MainMenuWrap>
-          <Menu />
-          <LogInOut />
-        </MainMenuWrap>
-      </Header>
+      <Header />
 
       <Content>
         <Switch>
@@ -36,9 +26,7 @@ export function App() {
         </Switch>
       </Content>
 
-      <Footer>
-        Footer
-      </Footer>
+      <Footer />
     </Layout>
   )
 }

@@ -1,5 +1,4 @@
-import { NotFoundPg } from './Pages/notFoundPage'
-import { orderFormPg } from './Pages/orderFormPg'
+import { OrderFormPg } from './Pages/orderFormPg'
 import { IdentificationContainer } from './modules/Identification'
 import {
   PATH_HOME,
@@ -8,19 +7,20 @@ import {
   PATH_REGISTRATION,
 } from './pathes'
 import { GalleryPg } from './Pages/galleryPg'
+import { HomePg } from './Pages/homePg'
 
 export const routes = [
   {
     path: PATH_HOME,
     title: 'Home',
     isExact: true,
-    component: NotFoundPg,
+    component: HomePg,
   },
   {
     path: PATH_ORDER_FORM,
     title: 'Order form',
     isExact: true,
-    component: orderFormPg,
+    component: OrderFormPg,
   },
   {
     path: PATH_GALLERY,

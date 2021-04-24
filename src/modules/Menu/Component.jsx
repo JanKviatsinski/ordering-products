@@ -1,19 +1,21 @@
-import React from 'react'
-import { Link as RouterLink } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link as RouterLink, useLocation } from 'react-router-dom'
 import { MenuStyled } from './Styled'
 import { MenuItem } from '../../Components/MenuItem'
 import { routes } from '../../routes'
-import { history } from '../../history'
 import { onSelectMenuKey } from './onSelectMenuKey'
 
-export function Menu() {
-  const selectedKey = history.location.pathname
+export function Menu({ mode }) {
+  const locationPath = useLocation().pathname
+
+  useEffect(() => {
+  }, [locationPath])
 
   return (
     <MenuStyled
       onClick={onSelectMenuKey}
-      selectedKeys={[selectedKey]}
-      mode="vertical"
+      selectedKeys={[locationPath]}
+      mode={mode}
     >
       {routes.map(({ path, title }) => (
         <MenuItem key={path}>

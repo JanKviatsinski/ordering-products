@@ -1,1 +1,1 @@
-export { orderFormPg } from './Component'
+export { OrderFormPg } from './Component'

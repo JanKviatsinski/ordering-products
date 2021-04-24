@@ -1,4 +1,4 @@
-export const prefixValues = ['+37529', '+37533', '+37544', '+37525']
+export const prefixes = ['+37529', '+37533', '+37544', '+37525']
 export const selection = [
   {
     name: 'White cheese',
