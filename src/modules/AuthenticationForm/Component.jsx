@@ -5,8 +5,7 @@ import { Form } from '../../Components/Form'
 import { Button } from '../../Components/Button'
 import { FormItem } from '../../Components/FormItem'
 import { validatePassword } from '../../utils/validatePassword'
-import { MODAL_STATUS_INFO } from '../../constats'
-import { modalInfo } from '../../utils/showModal'
+import { showModal } from '../../utils/showModal'
 import { Spin } from '../../Components/Spin'
 import { PATH_REGISTRATION } from '../../pathes'
 import { Title } from '../../Components/Title'
@@ -21,9 +20,14 @@ export function AuthenticationFormCmp(
     spinStatus,
   },
 ) {
-  if (modalStatus === MODAL_STATUS_INFO) {
-    modalInfo({ modalTitle, modalContent, hideModal })
-  }
+  showModal(
+    {
+      hideModal,
+      modalStatus,
+      modalTitle,
+      modalContent,
+    },
+  )
 
   if (spinStatus) {
     return (

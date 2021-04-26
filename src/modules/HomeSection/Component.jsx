@@ -21,12 +21,12 @@ export function HomeSection(
           key={photoSrc}
           padding="50px"
           width={250}
-          maxWidth="400px"
+          maxwidth="400px"
           src={photoSrc}
         />
 
         <Typography
-          maxWidth="500px"
+          maxwidth="500px"
         >
           <Title level={4} text={title} />
           <Paragraph text={text} />
@@ -38,7 +38,7 @@ export function HomeSection(
   return (
     <HomeSectionStyled>
       <Typography
-        maxWidth="500px"
+        maxwidth="500px"
       >
         <Title level={4} text={title} />
         <Paragraph text={text} />
@@ -48,7 +48,7 @@ export function HomeSection(
         key={photoSrc}
         padding="50px"
         width={250}
-        maxWidth="400px"
+        maxwidth="400px"
         src={photoSrc}
       />
     </HomeSectionStyled>

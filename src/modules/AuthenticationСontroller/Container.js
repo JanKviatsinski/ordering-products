@@ -1,10 +1,10 @@
 import connect from 'react-redux/lib/connect/connect'
 import { AuthenticationController } from './Component'
-import { getUserLoggedStatus } from '../../selectors/userDataSelectors'
+import { getLoggedStatus } from '../../selectors/appSelectors'
 import { onLogOut } from '../../actions/userDataActions/onLogOut'
 
 const mapStateToProps = (state) => ({
-  logged: getUserLoggedStatus(state),
+  logged: getLoggedStatus(state),
 })
 
 const mapDispatchToProps = {

@@ -1,6 +1,6 @@
 import { URL_AUTHENTICATION } from './constants'
 
-export function authentication(email, password) {
+export function postAuthentication(email, password) {
   return fetch(
     URL_AUTHENTICATION,
     {

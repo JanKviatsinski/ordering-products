@@ -29,4 +29,3 @@ export const LinksStyled = styled.div`
 display: flex;
 justify-content: space-around;
 `
-// color: ${props => props.theme.colors.fontColor2};

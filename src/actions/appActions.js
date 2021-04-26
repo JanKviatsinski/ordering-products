@@ -6,7 +6,7 @@ export const SHOW_MODAL = `${MODULE_NAME}/SHOW MODAL`
 export const SPIN_ON = `${MODULE_NAME}/SPIN ON`
 export const SPIN_OFF = `${MODULE_NAME}/SPIN OFF`
 
-export function showModal({ modalStatus, modalTitle, modalContent }) {
+export function activeModalStatus({ modalStatus, modalTitle, modalContent }) {
   return {
     type: SHOW_MODAL,
     payload: {
@@ -18,6 +18,8 @@ export function showModal({ modalStatus, modalTitle, modalContent }) {
 }
 
 export function hideModal() {
+  // Modal.destroyAll() можно перенести в функцию showModal
+  // но я не понял как, англиского нехватает
   Modal.destroyAll()
   return {
     type: CLOSE_MODAL,

@@ -2,8 +2,7 @@ import {
   MODAL_STATUS_ERROR,
   MODAL_STATUS_INFO,
   MODAL_STATUS_SUCCESS,
-  // SHOW_MODAL,
-} from '../constats'
+} from '../utils/showModal'
 import { getUrlPostOrder } from '../api/getUrlPostOrder'
 import { history } from '../history'
 import { postOrder } from '../api/postOrder'
@@ -12,23 +11,20 @@ import {
   getUserEmail,
 } from '../selectors/userDataSelectors'
 import { PATH_AUTHENTICATION, PATH_REGISTRATION } from '../pathes'
-import { addDataToStorage } from '../api/addDataToStorage'
-import { showModal, spinOff, spinOn } from './appActions'
-
-// const MODULE_NAME = 'ORDER_FORM'
-// export const POST_ORDER_SUCCESS = `${MODULE_NAME}/POST_ORDER_SUCCESS`
-// export const POST_ORDER_ERROR = `${MODULE_NAME}/POST_ORDER_ERROR`
+import { addToStorage } from '../api/addToStorage'
+import { activeModalStatus, spinOff, spinOn } from './appActions'
+import { getLoggedStatus } from '../selectors/appSelectors'
 
 export function onSubmitOrderForm(formData) {
   return async (dispatch, getState) => {
     const state = getState()
-    const { localId } = state.userData
+    const isLogged = getLoggedStatus(state)
 
-    if (!localId) {
-      addDataToStorage('formData', formData)
+    if (!isLogged) {
+      addToStorage('formData', formData)
       history.push(`${PATH_REGISTRATION}${PATH_AUTHENTICATION}`)
       dispatch(
-        showModal({
+        activeModalStatus({
           modalStatus: MODAL_STATUS_INFO,
           modalTitle: 'Identify yourself',
           modalContent: 'Identify yourself',
@@ -36,6 +32,8 @@ export function onSubmitOrderForm(formData) {
       )
       return false
     }
+
+    const { localId } = state.userData
     const UrlPostOrder = getUrlPostOrder(localId)
 
     const data = {
@@ -43,35 +41,34 @@ export function onSubmitOrderForm(formData) {
       displayName: getUserDisplayName(state),
       email: getUserEmail(state),
     }
-    console.log(data)
 
     dispatch(spinOn())
+    try {
+      const responsePostOrder = await postOrder({ data, UrlPostOrder })
+      const { name } = await responsePostOrder.json()
 
-    const responsePostOrder = await postOrder({ data, UrlPostOrder })
-    const { name } = await responsePostOrder.json()
-    console.log(name)
+      dispatch(spinOff())
 
-    dispatch(spinOff())
-
-    if (name !== undefined) {
-      console.log('save order')
+      if (name !== undefined) {
+        return dispatch(
+          activeModalStatus({
+            modalStatus: MODAL_STATUS_SUCCESS,
+            modalTitle: 'SUCCESS save order',
+            modalContent: 'SUCCESS save order',
+          }),
+        )
+      }
+    } catch (e) {
+      dispatch(spinOff())
 
       return dispatch(
-        showModal({
-          modalStatus: MODAL_STATUS_SUCCESS,
-          modalTitle: 'SUCCESS save order',
-          modalContent: 'SUCCESS save order',
+        activeModalStatus({
+          modalStatus: MODAL_STATUS_ERROR,
+          modalTitle: 'ERROR save order',
+          modalContent: `${e}`,
         }),
       )
     }
-    console.log('ERROR')
-
-    return dispatch(
-      showModal({
-        modalStatus: MODAL_STATUS_ERROR,
-        modalTitle: 'ERROR save order',
-        modalContent: 'ERROR save order',
-      }),
-    )
+    return false
   }
 }

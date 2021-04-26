@@ -3,7 +3,7 @@ import { Link as RouterLink, useLocation } from 'react-router-dom'
 import { MenuStyled } from './Styled'
 import { MenuItem } from '../../Components/MenuItem'
 import { routes } from '../../routes'
-import { onSelectMenuKey } from './onSelectMenuKey'
+import { history } from '../../history'
 
 export function Menu({ mode }) {
   const locationPath = useLocation().pathname
@@ -13,7 +13,7 @@ export function Menu({ mode }) {
 
   return (
     <MenuStyled
-      onClick={onSelectMenuKey}
+      onClick={(event) => history.push(event.key)}
       selectedKeys={[locationPath]}
       mode={mode}
     >

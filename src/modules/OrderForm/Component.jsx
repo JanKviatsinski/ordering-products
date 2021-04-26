@@ -1,16 +1,7 @@
 import React from 'react'
 import { Input, Select } from 'antd'
 import { Form } from '../../Components/Form'
-import {
-  MODAL_STATUS_ERROR,
-  MODAL_STATUS_INFO,
-  MODAL_STATUS_SUCCESS,
-} from '../../constats'
-import {
-  modalError,
-  modalInfo,
-  modalSuccess,
-} from '../../utils/showModal'
+import { showModal } from '../../utils/showModal'
 import { prefixes, selection } from './constants'
 import { FormSelect } from '../../Components/FormSelect'
 import { FormItem } from '../../Components/FormItem'
@@ -27,24 +18,19 @@ export function OrderFormCmp(
     modalStatus,
     modalTitle,
     modalContent,
-    spinStatus,
-    onSubmitOrderForm,
     hideModal,
+    onSubmitOrderForm,
+    spinStatus,
   },
 ) {
-  switch (modalStatus) {
-    case MODAL_STATUS_SUCCESS:
-      modalSuccess({ modalTitle, modalContent, hideModal })
-      break
-    case MODAL_STATUS_ERROR:
-      modalError({ modalTitle, modalContent, hideModal })
-      break
-    case MODAL_STATUS_INFO:
-      modalInfo({ modalTitle, modalContent, hideModal })
-      break
-    default:
-      break
-  }
+  showModal(
+    {
+      modalStatus,
+      modalTitle,
+      modalContent,
+      hideModal,
+    },
+  )
 
   if (spinStatus) {
     return (

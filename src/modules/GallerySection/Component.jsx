@@ -11,7 +11,7 @@ import { Image } from '../../Components/Image'
 export function GallerySection({ title, text, photos }) {
   const ref = useRef()
 
-  function onClickPhoto(e) {
+  const onClickPhoto = (e) => {
     if (e.target.tagName === 'IMG') {
       ref.current.goTo(e.target.id)
     }
@@ -45,7 +45,6 @@ export function GallerySection({ title, text, photos }) {
           photos.map((photoSrc, index) => (
             <Image
               id={index}
-              // data-x="ccc"
               key={photoSrc}
               width="100%"
               src={photoSrc}

@@ -1,7 +1,7 @@
 import { USER_LOG_OUT } from './constatnts'
 import { history } from '../../history'
 import { PATH_AUTHENTICATION, PATH_REGISTRATION } from '../../pathes'
-import { userDataInitialState } from '../../store'
+import { appInitialState } from '../../store'
 
 export function onLogOut() {
   localStorage.clear()
@@ -9,6 +9,6 @@ export function onLogOut() {
 
   return {
     type: USER_LOG_OUT,
-    payload: userDataInitialState,
+    payload: appInitialState,
   }
 }

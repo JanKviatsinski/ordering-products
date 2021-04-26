@@ -1,3 +1,0 @@
-export const MODAL_STATUS_ERROR = 'ERROR'
-export const MODAL_STATUS_SUCCESS = 'SUCCESS'
-export const MODAL_STATUS_INFO = 'INFO'

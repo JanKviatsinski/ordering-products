@@ -1,5 +1,4 @@
 import React from 'react'
-// import { ModalStyled } from './Styled'
 import { Spin as SpinAnt, Space } from 'antd'
 
 export function Spin() {
@@ -11,4 +10,3 @@ export function Spin() {
     </Space>
   )
 }
-// удалить STYLeD

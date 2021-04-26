@@ -1,58 +1,60 @@
-import { registration } from '../../api/registration'
+import { postRegistration } from '../../api/postRegistration'
 import { history } from '../../history'
 import { PATH_ORDER_FORM } from '../../pathes'
-import { MODAL_STATUS_ERROR, MODAL_STATUS_SUCCESS } from '../../constats'
-import { addDataToStorage } from '../../api/addDataToStorage'
-import { showModal, spinOff, spinOn } from '../appActions'
+import { MODAL_STATUS_ERROR, MODAL_STATUS_SUCCESS } from '../../utils/showModal'
+import { addToStorage } from '../../api/addToStorage'
+import { activeModalStatus, spinOff, spinOn } from '../appActions'
 import { USER_IS_LOGGED } from './constatnts'
 
 export function onSubmitRegistration({ password, email, displayName }) {
   return async (dispatch) => {
     dispatch(spinOn())
 
-    const responseRegistration = await registration(
-      { password, email, displayName },
-    )
-    const resultRegistration = await responseRegistration.json()
-    const { idToken, localId } = resultRegistration
+    try {
+      const responseRegistration = await postRegistration(
+        { password, email, displayName },
+      )
+      const resultRegistration = await responseRegistration.json()
+      const { idToken, localId } = resultRegistration
 
-    dispatch(spinOff())
+      dispatch(spinOff())
 
-    const userData = {
-      password,
-      email,
-      displayName,
-      localId,
-      isLogged: true,
-    }
+      const userData = {
+        password,
+        email,
+        displayName,
+        localId,
+      }
 
-    if (idToken !== undefined) {
-      addDataToStorage('userData', userData)
-      console.log(localStorage)
+      if (idToken !== undefined) {
+        addToStorage('userData', userData)
 
-      dispatch(
-        showModal({
-          modalStatus: MODAL_STATUS_SUCCESS,
-          modalTitle: 'SUCCESS',
-          modalContent: 'SUCCESS',
+        dispatch(
+          activeModalStatus({
+            modalStatus: MODAL_STATUS_SUCCESS,
+            modalTitle: 'SUCCESS Registration',
+            modalContent: 'SUCCESS Registration',
+          }),
+        )
+
+        history.push(PATH_ORDER_FORM)
+
+        return dispatch({
+          type: USER_IS_LOGGED,
+          payload: userData,
+        })
+      }
+    } catch (e) {
+      dispatch(spinOff())
+
+      return dispatch(
+        activeModalStatus({
+          modalStatus: MODAL_STATUS_ERROR,
+          modalTitle: 'ERROR Registration',
+          modalContent: `${e}`,
         }),
       )
-
-      history.push(PATH_ORDER_FORM)
-
-      return dispatch({
-        type: USER_IS_LOGGED,
-        payload: userData,
-      })
     }
-    console.log('ERROR')
-
-    return dispatch(
-      showModal({
-        modalStatus: MODAL_STATUS_ERROR,
-        modalTitle: 'ERROR',
-        modalContent: 'ERROR',
-      }),
-    )
+    return false
   }
 }

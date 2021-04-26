@@ -9,3 +9,10 @@ export const HeaderStyled = styled(Header)`
    flex-direction: row;
    height: 100%;
     `
+
+export const MenuWrapStyled = styled.div`
+     display: flex;
+     flex-direction: row;
+     width: 100%;
+     justify-content: space-between;
+    `

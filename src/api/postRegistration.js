@@ -1,6 +1,6 @@
 import { URL_REGISTRATION_USER } from './constants'
 
-export function registration({ password, email, displayName }) {
+export function postRegistration({ password, email, displayName }) {
   return fetch(URL_REGISTRATION_USER, {
     method: 'POST',
     headers: {

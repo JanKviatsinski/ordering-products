@@ -3,13 +3,14 @@ import {
   Form,
   Input,
 } from 'antd'
+import { Link } from 'react-router-dom'
 import { FormStyled } from './Styled'
 import { FormItem } from '../../Components/FormItem'
 import { Button } from '../../Components/Button'
 import { validatePassword } from '../../utils/validatePassword'
-import { MODAL_STATUS_ERROR } from '../../constats'
-import { modalError } from '../../utils/showModal'
+import { showModal } from '../../utils/showModal'
 import { Spin } from '../../Components/Spin'
+import { PATH_AUTHENTICATION, PATH_REGISTRATION } from '../../pathes'
 
 const formItemLayout = {
   labelCol: {
@@ -41,9 +42,14 @@ export const RegistrationFormCmp = (
 ) => {
   const [form] = Form.useForm()
 
-  if (modalStatus === MODAL_STATUS_ERROR) {
-    modalError({ modalTitle, modalContent, hideModal })
-  }
+  showModal(
+    {
+      hideModal,
+      modalStatus,
+      modalTitle,
+      modalContent,
+    },
+  )
 
   if (spinStatus) {
     return (
@@ -108,6 +114,7 @@ export const RegistrationFormCmp = (
           <Button type="primary" htmlType="submit">
             Register
           </Button>
+          <Link to={`${PATH_REGISTRATION}${PATH_AUTHENTICATION}`}>  I have an account</Link>
         </FormItem>
       </FormStyled>
     </>

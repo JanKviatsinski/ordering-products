@@ -3,16 +3,16 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from 'redux-thunk'
 import { rootReducer } from './reducers'
 
-export const userDataInitialState = {
-  isLogged: false,
+const userDataInitialState = {
   localId: null,
 }
 
-const appInitialState = {
+export const appInitialState = {
   modalStatus: null,
   modalTitle: '',
   modalContent: null,
   spinStatus: false,
+  isLogged: false,
 }
 
 function getInitialState(keyFromStorage, alternativeObj) {
@@ -20,7 +20,6 @@ function getInitialState(keyFromStorage, alternativeObj) {
     ? JSON.parse(localStorage.getItem(keyFromStorage)) : alternativeObj
 }
 
-// константы для стейтов
 export const store = createStore(
   rootReducer,
   {
