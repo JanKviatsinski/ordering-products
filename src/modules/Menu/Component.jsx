@@ -5,7 +5,7 @@ import { MenuItem } from '../../Components/MenuItem'
 import { routes } from '../../routes'
 import { history } from '../../history'
 
-export function Menu({ mode }) {
+export function Menu(props) {
   const locationPath = useLocation().pathname
 
   useEffect(() => {
@@ -15,7 +15,8 @@ export function Menu({ mode }) {
     <MenuStyled
       onClick={(event) => history.push(event.key)}
       selectedKeys={[locationPath]}
-      mode={mode}
+      mode={props.mode}
+      {...props}
     >
       {routes.map(({ path, title }) => (
         <MenuItem key={path}>

@@ -3,6 +3,10 @@ import styled from 'styled-components'
 export const FooterStyled = styled.div`
 background-color: #001529;
 padding: 30px 40px 10px 40px;
+
+&&& *{
+color: ${(props) => props.theme.colors.fontColor1};
+}
     `
 
 export const MenuWrapStyled = styled.div`

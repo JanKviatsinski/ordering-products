@@ -5,7 +5,7 @@ export const theme = {
     fontColor1: 'rgb(221, 221, 221)',
     fontColor2: 'rgb(0, 0, 0)',
     primary: 'rgb(26, 88, 26)',
-    secondary: 'rgb(203,146,146)',
+    secondary: 'rgb(221, 221, 221)',
   },
   radii: {
     radius0: '0',

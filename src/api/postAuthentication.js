@@ -11,7 +11,6 @@ export function postAuthentication(email, password) {
       body: JSON.stringify({
         password,
         email,
-        returnSecureToken: true,
       }),
     },
   )

@@ -9,7 +9,11 @@ export function Header() {
     <HeaderStyled>
       <OwnerDataCard />
       <MenuWrapStyled>
-        <Menu mode="vertical" />
+        <Menu
+          mode="vertical"
+          color=" "
+          border_radius=" "
+        />
         <LogInOut />
       </MenuWrapStyled>
     </HeaderStyled>

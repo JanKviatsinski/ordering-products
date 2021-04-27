@@ -4,13 +4,10 @@ import thunk from 'redux-thunk'
 import { rootReducer } from './reducers'
 
 const userDataInitialState = {
-  localId: null,
 }
 
 export const appInitialState = {
   modalStatus: null,
-  modalTitle: '',
-  modalContent: null,
   spinStatus: false,
   isLogged: false,
 }

@@ -10,7 +10,6 @@ export function postRegistration({ password, email, displayName }) {
       password,
       email,
       displayName,
-      returnSecureToken: true,
     }),
   })
 }
