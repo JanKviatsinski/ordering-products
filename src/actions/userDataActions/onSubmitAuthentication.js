@@ -3,24 +3,28 @@ import {
   spinOff,
   spinOn,
 } from '../appActions'
-import { postAuthentication } from '../../api/postAuthentication'
 import { addToStorage } from '../../api/addToStorage'
 import { history } from '../../history'
 import { PATH_ORDER_FORM } from '../../pathes'
 import { MODAL_STATUS_ERROR, MODAL_STATUS_SUCCESS } from '../../utils/showModal'
 import { USER_IS_LOGGED } from './constatnts'
+import { makeRequest } from '../../api/makeRequest'
+import { METHODS, AUTHENTICATION_URL } from '../../api/constants'
 
 export function onSubmitAuthentication({ email, password }) {
   return async (dispatch) => {
     dispatch(spinOn())
 
-    try {
-      const responseAuthentication = await postAuthentication(email, password)
-      const resultAuthentication = await responseAuthentication.json()
-      const { idToken, displayName, localId } = resultAuthentication
+    const { data, failed } = await makeRequest({
+      method: METHODS.POST,
+      url: AUTHENTICATION_URL,
+      data: { email, password },
+    })
 
-      dispatch(spinOff())
+    dispatch(spinOff())
 
+    if (!failed) {
+      const { displayName, localId } = data
       const userData = {
         password,
         email,
@@ -28,36 +32,31 @@ export function onSubmitAuthentication({ email, password }) {
         localId,
       }
 
-      if (idToken !== undefined) {
-        addToStorage('userData', userData)
-        addToStorage('app', { isLogged: true })
+      addToStorage('userData', userData)
+      addToStorage('app', { isLogged: true })
 
-        history.push(PATH_ORDER_FORM)
+      history.push(PATH_ORDER_FORM)
 
-        dispatch(
-          activeModalStatus({
-            modalStatus: MODAL_STATUS_SUCCESS,
-            modalTitle: 'SUCCESS Authentication',
-            modalContent: 'SUCCESS Authentication',
-          }),
-        )
-
-        return dispatch({
-          type: USER_IS_LOGGED,
-          payload: userData,
-        })
-      }
-    } catch (e) {
-      dispatch(spinOff())
-
-      return dispatch(
+      dispatch(
         activeModalStatus({
-          modalStatus: MODAL_STATUS_ERROR,
-          modalTitle: 'ERROR Authentication',
-          modalContent: 'ERROR Authentication',
+          modalStatus: MODAL_STATUS_SUCCESS,
+          modalTitle: 'SUCCESS Authentication',
+          modalContent: 'SUCCESS Authentication',
         }),
       )
+
+      return dispatch({
+        type: USER_IS_LOGGED,
+        payload: userData,
+      })
     }
-    return false
+
+    return dispatch(
+      activeModalStatus({
+        modalStatus: MODAL_STATUS_ERROR,
+        modalTitle: `${failed}`,
+        modalContent: `${failed}`,
+      }),
+    )
   }
 }

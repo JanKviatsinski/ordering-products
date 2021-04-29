@@ -1,3 +1,8 @@
 const apiKey = 'AIzaSyD_MiDZhDFSmUZgvSUqSffavdsjWxwixbo'
-export const URL_REGISTRATION_USER = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`
-export const URL_AUTHENTICATION = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`
+export const USER_REGISTRATION_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${apiKey}`
+export const AUTHENTICATION_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${apiKey}`
+
+export const METHODS = {
+  POST: 'POST',
+  GET: 'GET',
+}

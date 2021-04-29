@@ -5,7 +5,6 @@ import {
 } from '../utils/showModal'
 import { getUrlPostOrder } from '../api/getUrlPostOrder'
 import { history } from '../history'
-import { postOrder } from '../api/postOrder'
 import {
   getUserDisplayName,
   getUserEmail,
@@ -14,6 +13,8 @@ import { PATH_AUTHENTICATION, PATH_REGISTRATION } from '../pathes'
 import { addToStorage } from '../api/addToStorage'
 import { activeModalStatus, spinOff, spinOn } from './appActions'
 import { getLoggedStatus } from '../selectors/appSelectors'
+import { METHODS } from '../api/constants'
+import { makeRequest } from '../api/makeRequest'
 
 export function onSubmitOrderForm(formData) {
   return async (dispatch, getState) => {
@@ -36,39 +37,40 @@ export function onSubmitOrderForm(formData) {
     const { localId } = state.userData
     const UrlPostOrder = getUrlPostOrder(localId)
 
-    const data = {
+    const orderData = {
       ...formData,
       displayName: getUserDisplayName(state),
       email: getUserEmail(state),
     }
 
     dispatch(spinOn())
-    try {
-      const responsePostOrder = await postOrder({ data, UrlPostOrder })
-      const { name } = await responsePostOrder.json()
 
-      dispatch(spinOff())
+    const { failed } = await makeRequest(
+      {
+        method: METHODS.POST,
+        url: UrlPostOrder,
+        data: orderData,
+      },
+    )
 
-      if (name !== undefined) {
-        return dispatch(
-          activeModalStatus({
-            modalStatus: MODAL_STATUS_SUCCESS,
-            modalTitle: 'SUCCESS save order',
-            modalContent: 'SUCCESS save order',
-          }),
-        )
-      }
-    } catch (e) {
-      dispatch(spinOff())
+    dispatch(spinOff())
 
+    if (!failed) {
       return dispatch(
         activeModalStatus({
-          modalStatus: MODAL_STATUS_ERROR,
-          modalTitle: 'ERROR save order',
-          modalContent: `${e}`,
+          modalStatus: MODAL_STATUS_SUCCESS,
+          modalTitle: 'SUCCESS save order',
+          modalContent: 'SUCCESS save order',
         }),
       )
     }
-    return false
+
+    return dispatch(
+      activeModalStatus({
+        modalStatus: MODAL_STATUS_ERROR,
+        modalTitle: `ERROR save order ${failed}`,
+        modalContent: `ERROR save order ${failed}`,
+      }),
+    )
   }
 }
